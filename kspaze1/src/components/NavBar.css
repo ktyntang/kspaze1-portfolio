@@ -41,6 +41,7 @@
 
 .navbar .logo {
   padding-left: 1em;
+  cursor: pointer;
 }
 
 .navbar .logo img {

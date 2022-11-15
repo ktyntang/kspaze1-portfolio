@@ -2,10 +2,10 @@ import './NavBar.css';
 import './Landing.css'
 import logo from '../assets/LOGO.png'
 
-export default function NavBar() {
+export default function NavBar({toggleLanding}) {
     return(
         <div className='navbar' id="navbar" style={{animation:'fadeIn ease 300ms'}}> 
-        <div className='logo'><img src={logo} alt='logo'></img></div>
+        <div className='logo' onClick={()=>toggleLanding()}><img src={logo} alt='logo'></img></div>
             <ul className="nav-links">
                 <li className="nav-item"><a href="#about">ABOUT</a></li>
                 <li className="nav-item"><a href="#features">FEATURES</a></li>

@@ -17,37 +17,29 @@ import StickyMenu from './components/StickyMenu';
 import firebase from './utils/firebase'
 import PageNFT from './components/PageNFT';
 import Home from './components/Home';
+import PageRouter from './components/PageRouter';
 
 // responsive breaks under 480px?
 // lazy import below fold
 // landing focus on top not bottom
 
 
-
 function App() {
   const [enter, setEnter] = useState(false)
   const [page,setPage] = useState('landing')
   const [show, setShow] = useState(false);
-  const [anim, setAnim] = useState('animateIn');
-  console.log('painted')
 
-  const handleRouteChange = (route)=>{
-    setEnter(true)
-    setPage(route)
+  const toggleLanding = ()=>{
+    setEnter((enter)=>!enter)
   }
 
  const openModal =(pageID)=>{
     setShow(true)
     setPage(pageID)
   }
-    
-  const exitAnim =() =>{setAnim('animateOut')}
 
-  
-  const resetPageAnim =() =>{
-    console.log('reset')
+  const closePage =() =>{
     setShow(false);
-    setAnim("animateIn")
   }
 
   function handleScrollSlide() {
@@ -69,10 +61,10 @@ function App() {
 
   return (
     <div className="App">
-      {!enter ? <Landing handleRouteChange={handleRouteChange} />:null}
+      {!enter ? <Landing toggleLanding={toggleLanding} />:null}
       {enter ? (
       <div>
-        <NavBar/>
+        <NavBar toggleLanding={toggleLanding}/>
         <StickyMenu/>
       <ParallaxProvider>
         <Home/>
@@ -87,7 +79,7 @@ function App() {
       </ParallaxProvider>
       </div>
        ) :null}
-      {show && page==='pagenft' ? <PageNFT anim={anim} exitAnim={exitAnim} resetPageAnim={resetPageAnim}/>:null}
+      {show ? <PageRouter pageID={page} closePage={closePage}/>:null}
       <footer>
         <SocialBubbles />
         <p>©2022 GC. All rights reserved.</p></footer>

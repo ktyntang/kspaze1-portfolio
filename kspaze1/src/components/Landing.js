@@ -26,7 +26,7 @@ const handleMouseLeave = (imgID) => {
 }
 
 
-export default function Landing({handleRouteChange}) {
+export default function Landing({toggleLanding}) {
    const [classNameSpecial,setClassNameSpecial] = useState('')
    const handleLandingClose=()=>{
       const landingBg = document.querySelector('.landing-container')
@@ -44,10 +44,9 @@ export default function Landing({handleRouteChange}) {
    <img className='fade-in' id="text" alt='text' src={text}/>
    <img className='fade-in zoom' id="fg" alt='foreground' src={foreground}/>
    <div className='face'>
-      <img className={classNameSpecial} id='hoverSpecial' alt='hoverSpecial' src={hoverSpecial} onAnimationEnd={()=>handleRouteChange('home')}/>
+      <img className={classNameSpecial} id='hoverSpecial' alt='hoverSpecial' src={hoverSpecial} onAnimationEnd={()=>toggleLanding('home')}/>
    </div>
    <div className='overlay-container fade-in' id='hoverdelay' onClick={()=>{handleLandingClose()}}>
-      <p>Click anywhere to Enter</p>
       <div className='hover-show' onMouseEnter={()=>handleMouseEnter('#hover1')} onMouseLeave={()=>handleMouseLeave('#hover1')}></div>
       <div className='hover-show' onMouseEnter={()=>handleMouseEnter('#hover2')} onMouseLeave={()=>handleMouseLeave('#hover2')}></div>
       <div className='hover-show' onMouseEnter={()=>handleMouseEnter('#hover3')} onMouseLeave={()=>handleMouseLeave('#hover3')}></div>
