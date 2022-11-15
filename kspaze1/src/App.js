@@ -14,7 +14,6 @@ import bannerProjects from './assets/Banners/bannerProjects.png'
 import { ParallaxProvider } from 'react-scroll-parallax';
 import SocialBubbles from './components/SocialBubbles';
 import StickyMenu from './components/StickyMenu';
-import firebase from './utils/firebase'
 import PageNFT from './components/PageNFT';
 
 import PageRouter from './components/PageRouter';
