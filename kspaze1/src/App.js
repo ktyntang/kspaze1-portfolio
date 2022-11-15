@@ -16,8 +16,11 @@ import SocialBubbles from './components/SocialBubbles';
 import StickyMenu from './components/StickyMenu';
 import firebase from './utils/firebase'
 import PageNFT from './components/PageNFT';
-import Home from './components/Home';
+
 import PageRouter from './components/PageRouter';
+
+const homePromise = import('./components/Home');
+const Home = React.lazy(() => homePromise);
 
 // responsive breaks under 480px?
 // lazy import below fold
