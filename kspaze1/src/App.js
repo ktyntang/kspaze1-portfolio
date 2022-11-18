@@ -1,26 +1,17 @@
-import React, {useState, useEffect, useRef} from 'react';
-import Landing from './components/Landing';
-import './App.css';
-import HomeAbout from './components/HomeAbout';
-import HomeFeature from './components/HomeFeature';
-import HomeNFT from './components/HomeNFT';
-import HomeProjects from './components/HomeProjects';
-import NavBar from './components/NavBar';
-import MyParallaxBanner from './components/Banner';
-import { ParallaxProvider } from 'react-scroll-parallax';
-import SocialBubbles from './components/SocialBubbles';
-import StickyMenu from './components/StickyMenu';
+import React, {useState, useEffect} from 'react';
 import {getSortedUrls} from './utils/firebase'
-import placeholder from './assets/placeholderImg.jpg'
-
+import Landing from './components/Landing';
+import SocialBubbles from './components/SocialBubbles';
+import HomeMain from './components/HomeMain';
+import NavBar from './components/NavBar';
+import StickyMenu from './components/StickyMenu';
 import PageRouter from './components/PageRouter';
+import { ParallaxProvider } from 'react-scroll-parallax';
+import './App.css';
 
-const homePromise = import('./components/Home');
-const Home = React.lazy(() => homePromise);
 
 // responsive breaks under 480px?
 // responsiveness overlap when short screen
-// lazy import below fold
 // TODO:
 // react progressive image laoding
 // lazy import
@@ -44,13 +35,15 @@ function App() {
  const openModal =(pageID)=>{
     setShow(true)
     setPage(pageID)
-    disableScroll()
-
+    //disable scroll
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    window.onscroll = () => window.scrollTo(0, scrollTop);
   }
 
   const closePage =() =>{
     setShow(false);
-    enableScroll()
+    //enable scroll
+    window.onscroll = function() {};
   }
 
   function handleScrollSlide() {
@@ -70,35 +63,20 @@ function App() {
   }
   window.addEventListener("scroll", handleScrollSlide);
 
-  function disableScroll() {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    window.onscroll = () => window.scrollTo(0, scrollTop);
-} 
-function enableScroll() {
-    window.onscroll = function() {};
-}
-
 
   return (
     <div className="App">
       {!enter ? <Landing toggleLanding={toggleLanding} />:null}
-      {enter ? (
+      {enter ? 
       <div>
+        <ParallaxProvider>
+          <HomeMain/>
+        </ParallaxProvider>
+        <Home openModal={openModal} bannerImgList={bannerImgList}/>
         <NavBar toggleLanding={toggleLanding}/>
         <StickyMenu/>
-      <ParallaxProvider>
-        <Home/>
-        <HomeAbout navID='About'  slideDirection='slide-left'  openModal={openModal}/>
-        <MyParallaxBanner img={bannerImgList[0] || placeholder}/>
-        <HomeFeature navID='Feature' slideDirection='slide-right'  openModal={openModal}/>
-        <MyParallaxBanner img={bannerImgList[1]|| placeholder}/>
-        <HomeNFT navID='NFT' slideDirection='slide-left' openModal={openModal}/>
-        <MyParallaxBanner img={bannerImgList[2]|| placeholder}/>
-        <HomeProjects navID='Projects' slideDirection='slide-left' openModal={openModal}/>
-        <MyParallaxBanner img={bannerImgList[3]|| placeholder} aspectRatio='2 / 1'/>
-      </ParallaxProvider>
       </div>
-       ) :null}
+      :null}
       {show ? <PageRouter pageID={page} closePage={closePage}/>:null}
       <footer>
         <SocialBubbles/>

@@ -9,7 +9,7 @@ import hover5 from '../assets/Landing/hover5.png'
 import hover6 from '../assets/Landing/hover6.png'
 import hover7 from '../assets/Landing/hover7.png'
 import hoverSpecial from '../assets/Landing/hoverSpecial.png'
-import homeBg from '../assets/homeBg.png'
+
 
 import './Landing.css';
 import { useState } from 'react'
