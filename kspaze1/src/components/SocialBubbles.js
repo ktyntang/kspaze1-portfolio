@@ -4,7 +4,7 @@ import { faTwitter,  faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 export default function SocialBubbles() {
     return (
-        <div className="icon-container" id='contact'>
+        <div className="icon-container" id='Contact'>
       <a href="https://www.instagram.com/kindgotospace" className="social" target='blank'>
         <FontAwesomeIcon icon={faInstagram} className="my-button"/>
       </a>

@@ -1,11 +1,23 @@
 import React, {useState, useEffect} from 'react';
-import '../App.css';
-import landingAbout from '../assets/About/landingAbout.JPG'
+import {getSortedUrls, getImgCaptions} from '../utils/firebase'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import placeholder from '../assets/placeholderImg.jpg'
+import '../App.css';
 
 export default function SectionOne({navID='',slideDirection='',openModal}) {
- 
+    const [aboutImgList, setAboutImgList] = useState([])
+    const [aboutCaptionList, setAboutCaptionList] = useState([])
+    
+    
+    useEffect(()=>{
+        getSortedUrls('homeAbout').then(res=>setAboutImgList(res))
+        getImgCaptions('homeAbout').then(res=>setAboutCaptionList(res))
+    },[])
+    
+    const successfulImgFetch = aboutImgList.length
+    const placeholderCaption = 'Artwork by Kspaze1'
+    
     return (
         <div className="section" id={`${navID}`}>
             <div className="text left">
@@ -33,12 +45,19 @@ export default function SectionOne({navID='',slideDirection='',openModal}) {
                 </div>
                 </div>
 
-            <div className="image">
-                <img src={landingAbout} alt=""></img>
+
+            <div className='image carousel-container'>
+            {successfulImgFetch ? 
+                aboutImgList.map((image,i) => {
+                        return (
+            <div>
+                    <img src={image} alt={`${image}`} ></img>
                 <div className="overlay">
-                    <div className="img-credit">By Jazpar Photography</div>
+                    <div className="img-credit">{aboutCaptionList[i]? `${aboutCaptionList[i]}` : placeholderCaption }</div>
                 </div>
-            </div>
+            </div>)})            
+             : <img src={placeholder} alt={'error loading images'} ></img> }
+        </div>
         </div>
     );
 }

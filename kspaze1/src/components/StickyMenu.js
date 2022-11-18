@@ -4,7 +4,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 export default function StickyMenu() {
     return (
         <div className="icon-menu fade-in">
-      <a href="#navbar">
+      <a href="#top">
         <FontAwesomeIcon className="my-button menu" icon={faBars}/>
       </a>
         </div>

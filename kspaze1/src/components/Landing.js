@@ -1,4 +1,3 @@
-
 import text from '../assets/Landing/text.png'
 import background from '../assets/Landing/background.png'
 import foreground from '../assets/Landing/foreground.png'
