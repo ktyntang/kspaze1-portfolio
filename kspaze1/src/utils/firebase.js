@@ -5,6 +5,7 @@ const { getFirestore,collection, getDocs} = require("firebase/firestore")
 const firebaseConfig = {
   apiKey: "AIzaSyA8yG32JLP8Nln87qHtucY8caRPgT2BZxY", 
   authDomain: "kspaze1-gc.firebaseapp.com",
+  databaseURL: "https://kspaze1-gc-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "kspaze1-gc",
   storageBucket: "kspaze1-gc.appspot.com",
   messagingSenderId: "90513859284",
