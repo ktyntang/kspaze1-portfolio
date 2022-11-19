@@ -12,7 +12,7 @@ import hoverSpecial from '../assets/Landing/hoverSpecial.png'
 
 
 import './Landing.css';
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 
 
 
@@ -20,12 +20,16 @@ export default function Landing({toggleLanding}) {
    const [animationEnd,setAnimationEnd] = useState(false)
    const [classNameSpecial,setClassNameSpecial] = useState('')
 
+   useEffect(()=>{
+      if (animationEnd){
+      const hoverDivs = document.querySelectorAll('.hover-show')
+         hoverDivs.forEach(hoverDiv=>hoverDiv.style.pointerEvents = 'all')
+         hoverDivs.forEach(hoverDiv=>hoverDiv.style.cursor = 'pointer')}
+   },[animationEnd])
+
    const handleMouseEnter = (imgID) => {
       const img = document.querySelector(imgID)
-      const hoverDivs = document.querySelectorAll('.hover-show')
-      if (animationEnd) {
-         hoverDivs.forEach(hoverDiv=>hoverDiv.style.cursor = 'pointer')
-         img.style.opacity = '1'}
+      img.style.opacity = '1'
    }
    
    const handleMouseLeave = (imgID) => {
