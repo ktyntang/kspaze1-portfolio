@@ -44,10 +44,11 @@ console.log('Done fetching captions')
 
 
 //filenameIndex => returns [index,url]
-const getIndexURL=(url)=>{
+const getIndexURL=(url,folderFileName)=>{
   if (url.status === 'fulfilled') {
-    const split = url.value.split('banner')
-    const index = split[split.length-1][0]
+    const splitUrl = url.value.split(folderFileName)
+    const index = splitUrl[splitUrl.length-1].split('.')[0]
+    console.log({index})
     const indexedURL = [parseInt(index),url.value]
     return indexedURL
   }
@@ -62,7 +63,7 @@ const getSortedUrls = async (folderFileName) => {
     return url
   })
   const urlList = await Promise.allSettled(urlPromises)
-  const indexedList = urlList.map(url => getIndexURL(url))
+  const indexedList = urlList.map(url => getIndexURL(url,folderFileName))
   const sortedList = indexedList.sort((a, b)=> a[0] - b[0])
   const sortedURLs = sortedList.map(arr => arr[1])
   console.log(`Fetched ${sortedURLs.length} images out of ${urlList.length} images in ${folderFileName} folder`)
