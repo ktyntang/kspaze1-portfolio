@@ -2,14 +2,17 @@ import React, {useState, useEffect} from 'react';
 import {getSortedUrls} from './utils/firebase'
 import Landing from './components/Landing';
 import SocialBubbles from './components/SocialBubbles';
-import HomeMain from './components/HomeMain';
 import NavBar from './components/NavBar';
 import StickyMenu from './components/StickyMenu';
 import PageRouter from './components/PageRouter';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import './App.css';
 
+const homeMainPromise = import('./components/HomeMain');
+const HomeMain = React.lazy(()=>homeMainPromise)
 
+const homePromise = import('./components/Home');
+const Home = React.lazy(()=>homePromise)
 // responsive breaks under 480px?
 // responsiveness overlap when short screen
 // TODO:
@@ -72,9 +75,9 @@ function App() {
         <ParallaxProvider>
           <HomeMain/>
         </ParallaxProvider>
-        <Home openModal={openModal} bannerImgList={bannerImgList}/>
         <NavBar toggleLanding={toggleLanding}/>
         <StickyMenu/>
+        <Home openModal={openModal} bannerImgList={bannerImgList}/>
       </div>
       :null}
       {show ? <PageRouter pageID={page} closePage={closePage}/>:null}

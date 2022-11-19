@@ -14,34 +14,41 @@ import hoverSpecial from '../assets/Landing/hoverSpecial.png'
 import './Landing.css';
 import { useState } from 'react'
 
-const handleMouseEnter = (imgID) => {
-   const img = document.querySelector(imgID)
-   img.style.opacity = '1'
-}
-
-const handleMouseLeave = (imgID) => {
-   const img = document.querySelector(imgID)
-   img.style.opacity = '0'
-}
 
 
 export default function Landing({toggleLanding}) {
+   const [animationEnd,setAnimationEnd] = useState(false)
    const [classNameSpecial,setClassNameSpecial] = useState('')
+
+   const handleMouseEnter = (imgID) => {
+      const img = document.querySelector(imgID)
+      const hoverDivs = document.querySelectorAll('.hover-show')
+      if (animationEnd) {
+         hoverDivs.forEach(hoverDiv=>hoverDiv.style.cursor = 'pointer')
+         img.style.opacity = '1'}
+   }
+   
+   const handleMouseLeave = (imgID) => {
+      const img = document.querySelector(imgID)
+      img.style.opacity = '0'
+   }
+   
    const handleLandingClose=()=>{
+      if (animationEnd){
       const landingBg = document.querySelector('.landing-container')
       landingBg.style.backgroundColor='white'
       const overlaycontainer = document.querySelector('.overlay-container')
       overlaycontainer.style.opacity='0'
       const bgfg = [...document.querySelectorAll('.fade-in')]
       bgfg.map(img=>img.style.opacity='0')
-      setClassNameSpecial('fade-in-out')
+      setClassNameSpecial('fade-in-out')}
    }
 
    return(
-<div className='landing-container'>
+<div className='landing-container' onLoad = {()=>setAnimationEnd(false)}>
    <img className='fade-in' id="bg" alt='background' src={background}/>
    <img className='fade-in' id="text" alt='text' src={text}/>
-   <img className='fade-in zoom' id="fg" alt='foreground' src={foreground}/>
+   <img className='fade-in zoom' id="fg" alt='foreground' src={foreground} onAnimationEnd={()=>setAnimationEnd(true)}/>
    <div className='face'>
       <img className={classNameSpecial} id='hoverSpecial' alt='hoverSpecial' src={hoverSpecial} onAnimationEnd={()=>toggleLanding('home')}/>
    </div>

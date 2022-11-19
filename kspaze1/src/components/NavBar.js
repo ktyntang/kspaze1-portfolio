@@ -1,6 +1,6 @@
 import './NavBar.css';
 import './Landing.css'
-import logo from '../assets/LOGO.png'
+import logo from '../assets/LOGO.svg'
 
 export default function NavBar({toggleLanding}) {
     return(
