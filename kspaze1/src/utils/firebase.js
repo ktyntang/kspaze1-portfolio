@@ -48,7 +48,6 @@ const getIndexURL=(url,folderFileName)=>{
   if (url.status === 'fulfilled') {
     const splitUrl = url.value.split(folderFileName)
     const index = splitUrl[splitUrl.length-1].split('.')[0]
-    console.log({index})
     const indexedURL = [parseInt(index),url.value]
     return indexedURL
   }
