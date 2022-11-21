@@ -21,7 +21,7 @@ import PageRouter from './components/PageRouter';
 //DO YOU NEED LAZYLOADING? 
 // how to prevent unnecessary fetching?
 // serve landing imgs?
-// change icon
+// brainstorm way to reduce landing load
 
 function App() {
   const [enter, setEnter] = useState(false)
