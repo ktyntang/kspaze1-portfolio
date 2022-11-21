@@ -1,11 +1,12 @@
 @font-face {
+  font-family: 'Library3am';
+  src: url(./fonts/Library3am.otf) format("opentype");
+}
+
+@font-face {
   font-family: 'Bahnschrift';
   src: url(./fonts/Bahnschrift.TTF) format('truetype');
   font-weight: 100;
-}
-@font-face {
-  font-family: 'Library3am';
-  src: url(./fonts/Library3am.otf) format("opentype");
 }
 
 
