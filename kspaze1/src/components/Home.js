@@ -1,30 +1,23 @@
 import React from 'react';
 import MyParallaxBanner from './Banner';
 import { ParallaxProvider } from 'react-scroll-parallax';
-import placeholder from '../assets/placeholderImg.jpg'
+import HomeAbout from './HomeAbout'
+import HomeFeature from './HomeFeature'
+import HomeNFT from './HomeNFT'
+import HomeProjects from './HomeProjects'
 import '../App.css';
 
-const aboutPromise = import('./HomeAbout');
-const HomeAbout = React.lazy(()=>aboutPromise)
-const featurePromise = import('./HomeFeature');
-const HomeFeature = React.lazy(()=>featurePromise)
-const nftPromise = import('./HomeNFT');
-const HomeNFT = React.lazy(()=>nftPromise)
-const projectsPromise = import('./HomeProjects');
-const HomeProjects = React.lazy(()=>projectsPromise)
-
-
-export default function Home({openModal,bannerImgList}) {
-
+export default function Home({openModal,bannerImgList,aboutImgList,aboutCaptionList,featureImgList,featureCaptionList,NFTImgList,NFTCaptionList,projectsImgList,projectsCaptionList,placeholder}) {
+    
   return (
       <ParallaxProvider>
-        <HomeAbout navID='About'  slideDirection='slide-left'  openModal={openModal}/>
+        <HomeAbout navID='About' slideDirection='slide-left'  openModal={openModal} aboutImgList={aboutImgList} aboutCaptionList={aboutCaptionList} placeholder={placeholder}/>
         <MyParallaxBanner img={bannerImgList[0] ?? placeholder}/>
-        <HomeFeature navID='Feature' slideDirection='slide-right'  openModal={openModal}/>
+        <HomeFeature navID='Feature' slideDirection='slide-right'  openModal={openModal} featureImgList={featureImgList} featureCaptionList={featureCaptionList} placeholder={placeholder}/>
         <MyParallaxBanner img={bannerImgList[1] ?? placeholder}/>
-        <HomeNFT navID='NFT' slideDirection='slide-left' openModal={openModal}/>
+        <HomeNFT navID='NFT' slideDirection='slide-left' openModal={openModal} NFTImgList={NFTImgList} NFTCaptionList={NFTCaptionList} placeholder={placeholder}/>
         <MyParallaxBanner img={bannerImgList[2] ?? placeholder}/>
-        <HomeProjects navID='Projects' slideDirection='slide-left' openModal={openModal}/>
+        <HomeProjects navID='Projects' slideDirection='slide-left' openModal={openModal} projectsImgList={projectsImgList} projectsCaptionList={projectsCaptionList} placeholder={placeholder}/>
         <MyParallaxBanner img={bannerImgList[3] ?? placeholder} aspectRatio='2 / 1'/>
       </ParallaxProvider>
   );

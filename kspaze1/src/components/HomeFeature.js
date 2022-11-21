@@ -1,22 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import {getSortedUrls, getImgCaptions} from '../utils/firebase'
-
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
-import placeholder from '../assets/placeholderImg.jpg'
 import '../App.css';
 
-export default function HomeFeature({navID='',slideDirection='',openModal}) {
-    const [featureImgList, setFeatureImgList] = useState([])
-    const [featureCaptionList, setFeatureCaptionList] = useState([])
-    
-    
-    useEffect(()=>{
-        getSortedUrls('homeFeature').then(res=>setFeatureImgList(res))
-        getImgCaptions('homeFeature').then(res=>setFeatureCaptionList(res))
-    },[])
+export default function HomeFeature({navID='',slideDirection='',openModal,featureImgList,featureCaptionList,placeholder}) {
     
     const successfulImgFetch = featureImgList.length
     const placeholderCaption = 'Artwork by Kspaze1'

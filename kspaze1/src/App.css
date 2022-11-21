@@ -18,7 +18,7 @@
     align-items: center;
     justify-content: center;
     font-family: 'Bahnschrift', sans-serif;
-    font-size: calc(10px + 1vmin);
+    font-size: 1rem;
 
   }
   
@@ -31,7 +31,7 @@ h1 {
   font-family: 'Library3am';
   color: rgb(0, 0, 0);
   font-weight:normal;
-  font-size: calc(20px + 3vmin);
+  font-size: 2rem;
   cursor:context-menu;
   }
 
@@ -111,7 +111,7 @@ img {
 }
 
 .slideUp{
-  animation: slideUp 1s ease-in
+  animation: slideUp 500ms ease-in
 }
 
 @keyframes slideUp {
@@ -150,16 +150,21 @@ img {
   height:100%;
   box-sizing: border-box;
   padding: 1% 0;
-  min-height: 30vh;
-  max-height: 70vh;
+  min-height: 50vh;
+  height:fit-content;
   display:flex;
   flex-direction: row;
 }
 
 .section.alt {
-  padding:1%;
-  background-color: rgba(144, 144, 144, 0.101);
-  border-radius:20px;
+  padding:2% 0;
+  /* background-color: rgba(144, 144, 144, 0.101); */
+  border-top:0.1rem solid rgb(222, 222, 222);
+}
+.section.alt img{
+  box-sizing: border-box;
+  margin:1%;
+  max-height: 60vh;
 }
 
 @media all and (min-width: 1024px) and (max-width: 1280px) { }
@@ -172,6 +177,10 @@ img {
   }
  }
  
+ .image-cont {
+  display: flex;
+  flex-direction: column;
+ }
 
 .image {
   box-sizing: border-box;
@@ -191,8 +200,9 @@ img {
 .section .carousel-item { 
   align-items: center;  
   width:100%;
-  height: 70vh;
+  height: 60vh;
   position: relative;
+  margin:0 0 2rem 0;
 }
 
 .section .carousel-item img {
@@ -201,6 +211,16 @@ img {
   margin: 0 auto;
 }
 
+.carousel-container .carousel .control-dots .dot {
+            box-shadow: 1px 1px 2px rgba(54, 28, 73, 0.58);
+            background: #ed5b3e;
+            border-radius: 0%;
+            width: 16px;
+            height: 5px;
+            cursor: pointer;
+            display: inline-block;
+            margin: 0 2px;
+}
 
 .carousel-container .carousel .control-next.control-arrow, .carousel-container .carousel .control-next.control-arrow:hover{
   background-color: transparent;
@@ -277,7 +297,6 @@ img {
 
 .my-button {
   color: #ed5b3e;
-  /* background-color: rgb(255, 255, 255, 0.2); */
   cursor: pointer;
   transition: transform ease 400ms;
 }
@@ -303,20 +322,21 @@ img {
 }
 
 
+.icon-menu {
+  padding:1rem 1rem 0 0;
+  width: fit-content;
+  position:fixed;
+  top:0;
+  right:0;
+  z-index:9;
+  font-size: 2rem;
+}
+
 .icon-container {
   margin:1rem 0;
   font-size: 2rem;
 }
 
-.icon-menu {
-  padding:1rem 1rem 0 0;
-  width: fit-content;
-  position:sticky;
-  top:0;
-  left:100%;
-  z-index:9;
-  font-size: 2rem;
-}
 
 
 

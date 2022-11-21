@@ -1,22 +1,11 @@
-
-import React, {useState, useEffect} from 'react';
-import {getSortedUrls, getImgCaptions} from '../utils/firebase'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
-import placeholder from '../assets/placeholderImg.jpg'
 import '../App.css';
 
-export default function SectionThree({navID='',slideDirection='',openModal}) {
-     const [NFTImgList, setNFTImgList] = useState([])
-    const [NFTCaptionList, setNFTCaptionList] = useState([])
-
-    useEffect(()=>{
-      getSortedUrls('homeNFT').then(res=>setNFTImgList(res))
-      getImgCaptions('homeNFT').then(res=>setNFTCaptionList(res))
-    },[])
-
+export default function SectionThree({navID='',slideDirection='',openModal,NFTImgList,NFTCaptionList,placeholder}) {
+    
     const successfulImgFetch = NFTImgList.length
     const placeholderCaption = 'Artwork by Kspaze1'
     

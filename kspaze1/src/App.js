@@ -1,35 +1,67 @@
 import React, {useState, useEffect} from 'react';
-import {getSortedUrls} from './utils/firebase'
+import {getSortedUrls, getImgCaptions} from './utils/firebase'
 import Landing from './components/Landing';
 import SocialBubbles from './components/SocialBubbles';
 import NavBar from './components/NavBar';
-import StickyMenu from './components/StickyMenu';
-import PageRouter from './components/PageRouter';
 import { ParallaxProvider } from 'react-scroll-parallax';
+import placeholder from './assets/placeholderImg.jpg'
+import HomeMain from './components/HomeMain';
+import Home from './components/Home';
+import PageRouter from './components/PageRouter';
 import './App.css';
 
-const homeMainPromise = import('./components/HomeMain');
-const HomeMain = React.lazy(()=>homeMainPromise)
+// const pagesPromise = import('./components/PageRouter');
+// const PageRouter = React.lazy(()=>pagesPromise)
 
-const homePromise = import('./components/Home');
-const Home = React.lazy(()=>homePromise)
-// responsive breaks under 480px?
-// responsiveness overlap when short screen
-// TODO:
-// react progressive image laoding
-// lazy import
-// host site
-
+//TO-DO
+// fix lazyload scroll. div placeholder w the min-height?
+// when does lazy preload work? 
+// App useEffect called on APP component load
+// but useEffect in the preload lazy PageRouter only called when Pagerouter is rendered
 
 function App() {
   const [enter, setEnter] = useState(false)
   const [page,setPage] = useState('landing')
   const [show, setShow] = useState(false);
+  const [homeMainImgList, setHomeMainImgList] = useState([])
   const [bannerImgList, setBannerImgList] = useState([])
+  const [aboutImgList, setAboutImgList] = useState([])
+  const [aboutCaptionList, setAboutCaptionList] = useState([])
+  const [featureImgList, setFeatureImgList] = useState([])
+  const [featureCaptionList, setFeatureCaptionList] = useState([])
+  const [NFTImgList, setNFTImgList] = useState([])
+  const [NFTCaptionList, setNFTCaptionList] = useState([])
+  const [projectsImgList, setProjectsImgList] = useState([])
+  const [projectsCaptionList, setProjectsCaptionList] = useState([])
+  const [aboutPageImgList, setAboutPageImgList] = useState([])
+  const [aboutPageCaptionList, setAboutPageCaptionList] = useState([])
+  const [featurePageImgList, setFeaturePageImgList] = useState([])
+  const [featurePageCaptionList, setFeaturePageCaptionList] = useState([])
+  const [NFTPageImgList, setNFTPageImgList] = useState([])
+  const [NFTPageCaptionList, setNFTPageCaptionList] = useState([])
+  const [projectsPageImgList, setProjectsPageImgList] = useState([])
+  const [projectsPageCaptionList, setProjectsPageCaptionList] = useState([])
 
   useEffect(()=>{
+    getSortedUrls('homeMain').then(res=>setHomeMainImgList(res))
+    getSortedUrls('homeAbout').then(res=>setAboutImgList(res))
+    getImgCaptions('homeAbout').then(res=>setAboutCaptionList(res))
     getSortedUrls('homeBanner').then(res=>setBannerImgList(res))
-  },[])
+    getSortedUrls('homeFeature').then(res=>setFeatureImgList(res))
+    getImgCaptions('homeFeature').then(res=>setFeatureCaptionList(res))
+    getSortedUrls('homeNFT').then(res=>setNFTImgList(res))
+    getImgCaptions('homeNFT').then(res=>setNFTCaptionList(res))
+    getSortedUrls('homeProjects').then(res=>setProjectsImgList(res))
+    getImgCaptions('homeProjects').then(res=>setProjectsCaptionList(res))
+    getSortedUrls('pageAbout').then(res=>setAboutPageImgList(res))
+    getImgCaptions('pageAbout').then(res=>setAboutPageCaptionList(res))
+    getSortedUrls('pageFeature').then(res=>setFeaturePageImgList(res))
+    getImgCaptions('pageFeature').then(res=>setFeaturePageCaptionList(res))
+    getSortedUrls('pageNFT').then(res=>setNFTPageImgList(res))
+    getImgCaptions('pageNFT').then(res=>setNFTPageCaptionList(res))
+    getSortedUrls('pageProjects').then(res=>setProjectsPageImgList(res))
+    getImgCaptions('pageProjects').then(res=>setProjectsPageCaptionList(res))
+    },[])
 
   const toggleLanding = ()=>{
     setEnter((enter)=>!enter)
@@ -73,14 +105,34 @@ function App() {
       {enter ? 
       <div>
         <ParallaxProvider>
-          <HomeMain/>
+          <HomeMain homeMainImgList={homeMainImgList} placeholder={placeholder}/>
         </ParallaxProvider>
         <NavBar toggleLanding={toggleLanding}/>
-        <StickyMenu/>
-        <Home openModal={openModal} bannerImgList={bannerImgList}/>
+        <Home 
+        openModal={openModal} 
+        bannerImgList={bannerImgList}
+        aboutImgList={aboutImgList}
+        aboutCaptionList={aboutCaptionList}
+        featureImgList={featureImgList}
+        featureCaptionList={featureCaptionList}
+        NFTImgList={NFTImgList}
+        NFTCaptionList={NFTCaptionList}
+        projectsImgList={projectsImgList}
+        projectsCaptionList={projectsCaptionList}
+        placeholder={placeholder}
+        />
       </div>
       :null}
-      {show ? <PageRouter pageID={page} closePage={closePage}/>:null}
+      {show ? <PageRouter pageID={page} closePage={closePage} placeholder={placeholder}
+      aboutPageImgList={aboutPageImgList}
+      aboutPageCaptionList={aboutPageCaptionList}
+      featurePageImgList={featurePageImgList} 
+      featurePageCaptionList={featurePageCaptionList} 
+      NFTPageImgList={NFTPageImgList} 
+      NFTPageCaptionList={NFTPageCaptionList} 
+      projectsPageImgList={projectsPageImgList} 
+      projectsPageCaptionList={projectsPageCaptionList}
+      />:null}
       <footer>
         <SocialBubbles/>
         <p>©2022 GC. All rights reserved.</p></footer>

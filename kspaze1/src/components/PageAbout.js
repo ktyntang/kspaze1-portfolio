@@ -1,22 +1,12 @@
-import React, {useState, useEffect} from 'react';
-import {getSortedUrls, getImgCaptions} from '../utils/firebase'
-import placeholder from '../assets/placeholderImg.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import '../App.css'; 
 
 
-export default function PageAbout({anim, toggleAnim, closePage}) {
-    const [aboutImgList, setAboutImgList] = useState([])
-    const [aboutCaptionList, setAboutCaptionList] = useState([])
+export default function PageAbout({anim, toggleAnim, closePage,aboutPageImgList, aboutPageCaptionList,placeholder}) {
     
-    useEffect(()=>{
-        getSortedUrls('pageAbout').then(res=>setAboutImgList(res))
-        getImgCaptions('pageAbout').then(res=>setAboutCaptionList(res))
-    },[])
-    
-    const successfulImgFetch = aboutImgList.length
-    const successfulCaptionFetch = aboutCaptionList.length
+    const successfulImgFetch = aboutPageImgList.length
+    const successfulCaptionFetch = aboutPageCaptionList.length
     const placeholderCaption = 'Artwork by Kspaze1'
 
     return (
@@ -30,9 +20,9 @@ export default function PageAbout({anim, toggleAnim, closePage}) {
                 <div className="body-wrapper">
                     <div className='text-block' style={{width:'100%',height:'100%',display:'flex'}}>
                         <div className='image' style={{width:'50%', float:'left', marginRight:'2%'}}>
-                            <img src={successfulImgFetch ? aboutImgList[0] : placeholder} alt='me' width='100%' height='100%'></img>
+                            <img src={successfulImgFetch ? aboutPageImgList[0] : placeholder} alt='me' width='100%' height='100%'></img>
                             <div className="overlay">
-                                <div className="img-credit">{successfulCaptionFetch? `${aboutCaptionList[0]}` : placeholderCaption }</div>
+                                <div className="img-credit">{successfulCaptionFetch? `${aboutPageCaptionList[0]}` : placeholderCaption }</div>
                             </div>
                         </div>
                         <div>
@@ -52,9 +42,9 @@ export default function PageAbout({anim, toggleAnim, closePage}) {
                         <p>Born and raised on the streets of Saigon, Vietnam and spent the teenage years and adulthood in Singapore, I was fortunate to learn from the best in both environments. I learnt art at 5 years old and fell in love with the hip-hop culture through its art forms, namely hip-hop music, graffiti and breaking (bboying). 
                             These street arts, and hip-hop rescued me from the darkest days as a troubled kid. I danced and played music so often that I skipped school. My pursuit in bboying has taught me various life lessons. I joined The Bronx Boys Rocking Crew – an global OG bboy crew originated from USA, and won many dance competitions in Singapore and the region with my greatest friends. </p>
                             <div className='image' style={{width:'50%', float:'right', marginLeft:'2%'}}>
-                                <img src={successfulImgFetch ? aboutImgList[1] : placeholder} alt='me' width='100%' height='100%'></img>
+                                <img src={successfulImgFetch ? aboutPageImgList[1] : placeholder} alt='me' width='100%' height='100%'></img>
                                 <div className="overlay">
-                                    <div className="img-credit">{successfulCaptionFetch? `${aboutCaptionList[1]}` : placeholderCaption }</div>
+                                    <div className="img-credit">{successfulCaptionFetch? `${aboutPageCaptionList[1]}` : placeholderCaption }</div>
                                 </div>
                             </div>
                         <p>The culture had also taught me the value of learning and contributing. I pursued a degree in Chemistry, and obtained a PhD in Chemistry from Nanyang Technological University, Singapore. I graduated with 2 Gold medals for Research Excellence and a patent, and I co-founded a deep-tech company to commercialize my research to combat COVID-19. The work has earned me Singapore’s EDGE 35-under-35 award and a feature on BBC and global media.</p>

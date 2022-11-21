@@ -1,20 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import {getSortedUrls, getImgCaptions} from '../utils/firebase'
-import placeholder from '../assets/placeholderImg.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import '../App.css'; 
-export default function PageFeature({anim, toggleAnim, closePage}) {
-    const [featureImgList, setFeatureImgList] = useState([])
-    const [featureCaptionList, setFeatureCaptionList] = useState([])
-    
-    useEffect(()=>{
-        getSortedUrls('pageFeature').then(res=>setFeatureImgList(res))
-        getImgCaptions('pageFeature').then(res=>setFeatureCaptionList(res))
-    },[])
-    
-    const successfulImgFetch = featureImgList.length
-    const successfulCaptionFetch = featureCaptionList.length
+export default function PageFeature({anim, toggleAnim, closePage,featurePageImgList,featurePageCaptionList,placeholder}) {
+
+    const successfulImgFetch = featurePageImgList.length
+    const successfulCaptionFetch = featurePageCaptionList.length
     const placeholderCaption = 'Artwork by Kspaze1'
 
     return (
@@ -26,22 +16,8 @@ export default function PageFeature({anim, toggleAnim, closePage}) {
                     </div>
                 </div>
 
-                <div className="section" >
-                    <div className='image'>
-                    <img src={successfulImgFetch ? featureImgList[0] : placeholder} alt='me' width='100%' height='100%'></img>
-                    <div className="overlay">
-                        <div className="img-credit">{successfulCaptionFetch? `${featureCaptionList[0]}` : placeholderCaption }</div>
-                    </div>
-                    </div>
-
-                <div className='image'>
-                <img src={successfulImgFetch ? featureImgList[1] : placeholder} alt='me' width='100%' height='100%'></img>
-                <div className="overlay">
-                    <div className="img-credit">{successfulCaptionFetch? `${featureCaptionList[1]}` : placeholderCaption }</div>
-                </div>
-
-                </div>
-
+                <div className="section alt" >
+                    
                     <div className="text left w-half" >
                         <div className='text-container'>
                             <div className='header-wrapper'>
@@ -54,14 +30,26 @@ export default function PageFeature({anim, toggleAnim, closePage}) {
                                 </div>
                         </div>
                     </div>
+                    <div className='image-cont'>
+                    <div className='image'>
+                        <img src={successfulImgFetch ? featurePageImgList[0] : placeholder} alt='me' width='100%' height='100%'></img>
+                        <div className="overlay">
+                            <div className="img-credit">{successfulCaptionFetch? `${featurePageCaptionList[0]}` : placeholderCaption }</div>
+                        </div>
+                    </div>
+
+                    <div className='image'>
+                        <img src={successfulImgFetch ? featurePageImgList[1] : placeholder} alt='me' width='100%' height='100%'></img>
+                        <div className="overlay">
+                            <div className="img-credit">{successfulCaptionFetch? `${featurePageCaptionList[1]}` : placeholderCaption }</div>
+                        </div>
+                    </div>
+                    </div>
+
                 </div>
+
                 <div className="section alt">
-                <div className='image'>
-                <img src={successfulImgFetch ? featureImgList[2] : placeholder} alt='me' width='100%' height='100%'></img>
-                <div className="overlay">
-                    <div className="img-credit">{successfulCaptionFetch? `${featureCaptionList[2]}` : placeholderCaption }</div>
-                </div>
-                </div>
+                
 
                     <div className="text left w-half" >
                         <div className='text-container'>
@@ -74,14 +62,17 @@ export default function PageFeature({anim, toggleAnim, closePage}) {
                           </div>
                         </div>
                     </div>
-                </div>
-                <div className="section" >
-                <div className='image'>
-                <img src={successfulImgFetch ? featureImgList[3] : placeholder} alt='me' width='100%' height='100%'></img>
+                    <div className='image'>
+                <img src={successfulImgFetch ? featurePageImgList[2] : placeholder} alt='me' width='100%' height='100%'></img>
                 <div className="overlay">
-                    <div className="img-credit">{successfulCaptionFetch? `${featureCaptionList[3]}` : placeholderCaption }</div>
+                    <div className="img-credit">{successfulCaptionFetch? `${featurePageCaptionList[2]}` : placeholderCaption }</div>
                 </div>
                 </div>
+
+                </div>
+
+                <div className="section alt" >
+                
 
                     <div className="text left w-half" >
                         <div className='text-container'>
@@ -95,15 +86,16 @@ export default function PageFeature({anim, toggleAnim, closePage}) {
                             </div>
                         </div>
                     </div>
+                    <div className='image'>
+                <img src={successfulImgFetch ? featurePageImgList[3] : placeholder} alt='me' width='100%' height='100%'></img>
+                <div className="overlay">
+                    <div className="img-credit">{successfulCaptionFetch? `${featurePageCaptionList[3]}` : placeholderCaption }</div>
+                </div>
+                </div>
                 </div>
 
                 <div className="section alt" >
-                <div className='image'>
-                <img src={successfulImgFetch ? featureImgList[4] : placeholder} alt='me' width='100%' height='100%'></img>
-                <div className="overlay">
-                    <div className="img-credit">{successfulCaptionFetch? `${featureCaptionList[4]}` : placeholderCaption }</div>
-                </div>
-                </div>
+                
 
                     <div className="text left w-half" >
                         <div className='text-container'>
@@ -117,15 +109,16 @@ export default function PageFeature({anim, toggleAnim, closePage}) {
                             </div>
                         </div>
                     </div>
+                    <div className='image'>
+                <img src={successfulImgFetch ? featurePageImgList[4] : placeholder} alt='me' width='100%' height='100%'></img>
+                <div className="overlay">
+                    <div className="img-credit">{successfulCaptionFetch? `${featurePageCaptionList[4]}` : placeholderCaption }</div>
+                </div>
+                </div>
                 </div>
 
-                <div className="section" >
-                <div className='image'>
-                <img src={successfulImgFetch ? featureImgList[5] : placeholder} alt='me' width='100%' height='100%'></img>
-                <div className="overlay">
-                    <div className="img-credit">{successfulCaptionFetch? `${featureCaptionList[5]}` : placeholderCaption }</div>
-                </div>
-                </div>
+                <div className="section alt" >
+                
 
                     <div className="text left w-half" >
                         <div className='text-container'>
@@ -139,15 +132,18 @@ export default function PageFeature({anim, toggleAnim, closePage}) {
                             </div>
                         </div>
                     </div>
+
+                    <div className='image'>
+                <img src={successfulImgFetch ? featurePageImgList[5] : placeholder} alt='me' width='100%' height='100%'></img>
+                <div className="overlay">
+                    <div className="img-credit">{successfulCaptionFetch? `${featurePageCaptionList[5]}` : placeholderCaption }</div>
+                </div>
+                </div>
+
                 </div>
 
                 <div className="section alt" >
-                <div className='image'>
-                <img src={successfulImgFetch ? featureImgList[6] : placeholder} alt='me' width='100%' height='100%'></img>
-                <div className="overlay">
-                    <div className="img-credit">{successfulCaptionFetch? `${featureCaptionList[6]}` : placeholderCaption }</div>
-                </div>
-                </div>
+                
 
                     <div className="text left w-half" >
                         <div className='text-container'>
@@ -160,6 +156,12 @@ export default function PageFeature({anim, toggleAnim, closePage}) {
                             </div>
                         </div>
                     </div>
+                    <div className='image'>
+                <img src={successfulImgFetch ? featurePageImgList[6] : placeholder} alt='me' width='100%' height='100%'></img>
+                <div className="overlay">
+                    <div className="img-credit">{successfulCaptionFetch? `${featurePageCaptionList[6]}` : placeholderCaption }</div>
+                </div>
+                </div>
                 </div>
         </div>
             

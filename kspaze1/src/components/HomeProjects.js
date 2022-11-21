@@ -1,23 +1,12 @@
-import React, {useState, useEffect} from 'react';
-import {getSortedUrls, getImgCaptions} from '../utils/firebase'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
-import placeholder from '../assets/placeholderImg.jpg'
 import '../App.css';
 
 
-export default function HomeProjects({navID='',slideDirection='',openModal}) {
-    const [projectsImgList, setProjectsImgList] = useState([])
-    const [projectsCaptionList, setProjectsCaptionList] = useState([])
-    
-    
-    useEffect(()=>{
-        getSortedUrls('homeProjects').then(res=>setProjectsImgList(res))
-        getImgCaptions('homeProjects').then(res=>setProjectsCaptionList(res))
-    },[])
-    
+export default function HomeProjects({navID='',slideDirection='',openModal,projectsImgList,projectsCaptionList,placeholder}) {
+       
     const successfulImgFetch = projectsImgList.length
     const placeholderCaption = 'Artwork by Kspaze1'
     

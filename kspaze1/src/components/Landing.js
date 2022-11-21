@@ -13,7 +13,7 @@ import hoverSpecial from '../assets/Landing/hoverSpecial.png'
 
 import './Landing.css';
 import { useState,useEffect } from 'react'
-
+//mask-image: linear-gradient(to left, rgba(0, 0, 0, 1) 50%, transparent 100%);
 
 
 export default function Landing({toggleLanding}) {

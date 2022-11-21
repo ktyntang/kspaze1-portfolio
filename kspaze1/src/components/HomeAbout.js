@@ -1,19 +1,8 @@
-import React, {useState, useEffect} from 'react';
-import {getSortedUrls, getImgCaptions} from '../utils/firebase'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
-import placeholder from '../assets/placeholderImg.jpg'
 import '../App.css';
 
-export default function SectionOne({navID='',slideDirection='',openModal}) {
-    const [aboutImgList, setAboutImgList] = useState([])
-    const [aboutCaptionList, setAboutCaptionList] = useState([])
-    
-    
-    useEffect(()=>{
-        getSortedUrls('homeAbout').then(res=>setAboutImgList(res))
-        getImgCaptions('homeAbout').then(res=>setAboutCaptionList(res))
-    },[])
+export default function SectionOne({navID='',slideDirection='',openModal,aboutImgList,aboutCaptionList,placeholder}) {
     
     const successfulImgFetch = aboutImgList.length
     const placeholderCaption = 'Artwork by Kspaze1'
