@@ -2,13 +2,13 @@ import React, {useState, useEffect} from 'react';
 import {getSortedUrls, getImgCaptions} from './utils/firebase'
 import Landing from './components/Landing';
 import SocialBubbles from './components/SocialBubbles';
+import './App.css';
 import NavBar from './components/NavBar';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import placeholder from './assets/placeholderImg.jpg'
 import HomeMain from './components/HomeMain';
 import Home from './components/Home';
 import PageRouter from './components/PageRouter';
-import './App.css';
 
 // const pagesPromise = import('./components/PageRouter');
 // const PageRouter = React.lazy(()=>pagesPromise)
@@ -18,6 +18,10 @@ import './App.css';
 // when does lazy preload work? 
 // App useEffect called on APP component load
 // but useEffect in the preload lazy PageRouter only called when Pagerouter is rendered
+//DO YOU NEED LAZYLOADING? 
+// how to prevent unnecessary fetching?
+// serve landing imgs?
+// change icon
 
 function App() {
   const [enter, setEnter] = useState(false)
