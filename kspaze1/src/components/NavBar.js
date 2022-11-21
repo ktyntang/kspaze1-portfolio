@@ -21,7 +21,7 @@ export default function NavBar({toggleLanding}) {
                 icon={faBars}
                 onClick={()=>setNavExpanded(!navExpanded)}/>
             </div>
-            <ul className= {navExpanded ? "nav-links expanded" : "nav-links"}>
+            <ul className= {navExpanded ? "nav-links expanded" : "nav-links"} onClick={()=>setNavExpanded(!navExpanded)}>
                 <li className="nav-item"><a href="#About">ABOUT</a></li>
                 <li className="nav-item"><a href="#Feature">FEATURES</a></li>
                 <li className="nav-item"><a href="#NFT">NFT</a></li>

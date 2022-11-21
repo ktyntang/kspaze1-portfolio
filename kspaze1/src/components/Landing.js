@@ -1,14 +1,14 @@
 import text from '../assets/Landing/text.png'
-import background from '../assets/Landing/background.png'
+import background from '../assets/Landing/background.jpg'
 import foreground from '../assets/Landing/foreground.png'
-import hover1 from '../assets/Landing/hover1.png'
-import hover2 from '../assets/Landing/hover2.png'
-import hover3 from '../assets/Landing/hover3.png'
-import hover4 from '../assets/Landing/hover4.png'
-import hover5 from '../assets/Landing/hover5.png'
-import hover6 from '../assets/Landing/hover6.png'
-import hover7 from '../assets/Landing/hover7.png'
-import hoverSpecial from '../assets/Landing/hoverSpecial.png'
+import hover1 from '../assets/Landing/hover1.jpg'
+import hover2 from '../assets/Landing/hover2.jpg'
+import hover3 from '../assets/Landing/hover3.jpg'
+import hover4 from '../assets/Landing/hover4.jpg'
+import hover5 from '../assets/Landing/hover5.jpg'
+import hover6 from '../assets/Landing/hover6.jpg'
+import hover7 from '../assets/Landing/hover7.jpg'
+import hoverSpecial from '../assets/Landing/hoverSpecial.jpg'
 
 
 import './Landing.css';
