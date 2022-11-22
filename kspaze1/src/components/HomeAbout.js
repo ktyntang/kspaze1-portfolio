@@ -13,7 +13,8 @@ export default function SectionOne({navID='',slideDirection='',openModal,aboutIm
                 <div className={`text-container js-scroll ${slideDirection}`}>
 
                 <div className='header-wrapper'>
-                    <h1>ABOUT</h1>
+                    <h1 style={{cursor:'pointer'}} onClick={()=>openModal(`page${navID}`)}>
+                        ABOUT</h1>
                 </div>
                 <div className="body-wrapper">
                     <p>I am Kspaze1, or K, a PhD-grad scientist with a
@@ -28,9 +29,12 @@ export default function SectionOne({navID='',slideDirection='',openModal,aboutIm
                     creating finer arts in the web3 space, while keeping that
                     raw and rebellious essence of street arts.</p>
                 </div>
-                <div className='button-wrapper icon-container'>
-                    <FontAwesomeIcon className = "my-button more" icon={faChevronRight} onClick={(event)=>openModal(`page${navID}`)}/>
-                </div>
+                <btn className='button-wrapper my-button more' onClick={()=>openModal(`page${navID}`)}>
+                    More
+                    <FontAwesomeIcon style={{marginLeft:'0.5rem'}} icon={faChevronRight}/>
+                    <FontAwesomeIcon  icon={faChevronRight}/>
+                    <FontAwesomeIcon  icon={faChevronRight}/>
+                </btn>
                 </div>
                 </div>
 

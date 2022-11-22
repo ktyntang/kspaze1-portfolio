@@ -38,7 +38,7 @@ const [selectedImg, setSelectedImg] = useState(null);
                 <div className="selected-image-container">
                 <div className="selected-image" style={{display:`${selectedImg? 'block':'none'}`}} animation={zoomFill} onAnimationEnd={()=>{if(zoomFill==='zoomFillOut')resetImg()}} onClick={()=>closeImg()}>
                         <img src={selectedImg?selectedImg.image:null} alt={selectedImg?`${selectedImg.image}`:null} ></img>
-                            <div className="img-credit">{selectedImg?`${captions[selectedImg.index]}`:null}></div>
+                            <div className="img-credit">{selectedImg?`${captions[selectedImg.index]}`:null}</div>
                 </div></div>
             </div>
 

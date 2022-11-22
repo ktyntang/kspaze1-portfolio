@@ -16,14 +16,21 @@ export default function PageProjects({anim, toggleAnim, closePage,projectsPageIm
                     <div className='header-wrapper'>
                         <h1>PROJECTS</h1>
                     </div>
-                    <div className="body-wrapper">
-                        <br/>
-                        <h3>My past web2 projects</h3>
-                        <ul>
-                            <li>Music cover</li>
-                            <li>Character arts</li>
-                            <li>Branding </li>
-                        </ul>
+                    <div className="section" >
+                    <div className="text left w-half" >
+                        <div className='text-container'>
+                            <div className='header-wrapper'>
+                                <h3>My past web2 projects</h3>
+                            </div>
+                            <div className="body-wrapper">
+                                <ul>
+                                    <li>Music cover</li>
+                                    <li>Character arts</li>
+                                    <li>Branding </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     </div>
                 </div>
                 </div>

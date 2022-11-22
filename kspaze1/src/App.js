@@ -14,10 +14,8 @@ import PageRouter from './components/PageRouter';
 // const PageRouter = React.lazy(()=>pagesPromise)
 
 //TO-DO
-// fix lazyload scroll. div placeholder w the min-height?
 // when does lazy preload work? 
-// App useEffect called on APP component load
-// but useEffect in the preload lazy PageRouter only called when Pagerouter is rendered
+// App useEffect called on APP component load but useEffect in the preload lazy PageRouter only called when Pagerouter is rendered
 //DO YOU NEED LAZYLOADING? 
 // how to prevent unnecessary fetching?
 // serve landing imgs?
@@ -105,13 +103,13 @@ function App() {
 
   return (
     <div className="App">
-      {!enter ? <Landing toggleLanding={toggleLanding} />:null}
-      {enter ? 
+      {!enter && <Landing toggleLanding={toggleLanding} />}
+      {enter &&
       <div>
         <ParallaxProvider>
           <HomeMain homeMainImgList={homeMainImgList} placeholder={placeholder}/>
         </ParallaxProvider>
-        <NavBar toggleLanding={toggleLanding}/>
+        <NavBar toggleLanding={toggleLanding} />
         <Home 
         openModal={openModal} 
         bannerImgList={bannerImgList}
@@ -125,9 +123,8 @@ function App() {
         projectsCaptionList={projectsCaptionList}
         placeholder={placeholder}
         />
-      </div>
-      :null}
-      {show ? <PageRouter pageID={page} closePage={closePage} placeholder={placeholder}
+      </div>}
+      {show && <PageRouter pageID={page} closePage={closePage} placeholder={placeholder}
       aboutPageImgList={aboutPageImgList}
       aboutPageCaptionList={aboutPageCaptionList}
       featurePageImgList={featurePageImgList} 
@@ -136,10 +133,11 @@ function App() {
       NFTPageCaptionList={NFTPageCaptionList} 
       projectsPageImgList={projectsPageImgList} 
       projectsPageCaptionList={projectsPageCaptionList}
-      />:null}
+      />}
       <footer>
+        <h1 style={{margin:'2rem 0 1rem 0', color:'rgb(75, 75, 75)'}}>Get In Touch</h1>
         <SocialBubbles/>
-        <p>©2022 GC. All rights reserved.</p></footer>
+        <p>©2022 Kspaze1. All rights reserved.</p></footer>
     </div>
   );
 }

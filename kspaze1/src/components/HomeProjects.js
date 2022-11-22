@@ -32,14 +32,18 @@ export default function HomeProjects({navID='',slideDirection='',openModal,proje
             <div className="text left w-half">
                 <div className={`text-container js-scroll ${slideDirection}`}>
                 <div className='header-wrapper'>
-                    <h1>PROJECTS</h1>
+                    <h1 style={{cursor:'pointer'}} onClick={()=>openModal(`page${navID}`)}>
+                    PROJECTS</h1>
                 </div>
                 <div className="body-wrapper">
                     <p>My portfolio projects and commissions cover mash-up fan arts, music song/album animation covers, character design works, and some 3D sculpting and VR arts.</p>
                 </div>
-                <div className='button-wrapper icon-container'>
-                    <FontAwesomeIcon className = "my-button more" icon={faChevronRight} onClick={(event)=>openModal(`page${navID}`)}/>
-                </div>
+                <btn className='button-wrapper my-button more' onClick={()=>openModal(`page${navID}`)}>
+                    More
+                    <FontAwesomeIcon style={{marginLeft:'0.5rem'}} icon={faChevronRight}/>
+                    <FontAwesomeIcon  icon={faChevronRight}/>
+                    <FontAwesomeIcon  icon={faChevronRight}/>
+                </btn>
                 </div>
             </div>
 
