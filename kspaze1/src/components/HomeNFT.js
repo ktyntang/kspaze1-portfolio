@@ -19,7 +19,7 @@ export default function SectionThree({navID='',slideDirection='',openModal,NFTIm
                             NFT</h1>
                     </div>
                     <div className="body-wrapper">
-                        <p>I started in the space with making fan arts for his favorite NFT projects as a collector. I got his first exposure as an NFT creator through a curated invitation to participate in Gamestop NFT marketplace as a launch artist. Making my debut with the HITCats art collection together with the first batch of creators for the marketplace launch in July 2022, I sold out my first NFT collection and I am motivated to improve my art skills in this space.</p>
+                        <p>I started in the space with making fan arts for my favorite NFT projects as a collector. I got my first exposure as an NFT creator through a curated invitation to participate in Gamestop NFT marketplace as a launch artist. Making my debut with the HITCats art collection together with the first batch of creators for the marketplace launch in July 2022, I sold out my first NFT collection and I am motivated to improve my art skills in this space.</p>
                     </div>
                     <btn className='button-wrapper my-button more' onClick={()=>openModal(`page${navID}`)}>
                     More

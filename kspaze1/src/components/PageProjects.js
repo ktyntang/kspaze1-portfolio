@@ -6,7 +6,7 @@ import '../App.css';
 
 export default function PageProjects({anim, toggleAnim, closePage,projectsPageImgList,projectsPageCaptionList, placeholder}) {
     
-    const successfulImgFetch = projectsPageImgList.length > 69
+    const successfulImgFetch = projectsPageImgList.length
     const placeholderCaption = 'Artwork by Kspaze1'
     
     return (
