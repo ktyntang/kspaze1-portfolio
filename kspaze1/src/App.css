@@ -4,10 +4,8 @@
 }
 
 @font-face {
-  font-family: 'Bahnschrift';
-  src: url(./fonts/Bahnschrift.woff) format('woff');
-  font-weight: 100;
-  
+  font-family: 'BahnschriftLight';
+  src: url(./fonts/BahnschriftLight.woff) format('woff');
 }
 
 :root {
@@ -24,7 +22,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family: 'Bahnschrift', sans-serif;
+    font-family: 'BahnschriftLight', sans-serif;
     font-size: 1rem;
     font-weight: 300;
 
