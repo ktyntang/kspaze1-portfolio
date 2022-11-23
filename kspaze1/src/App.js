@@ -5,7 +5,7 @@ import SocialBubbles from './components/SocialBubbles';
 import './App.css';
 import NavBar from './components/NavBar';
 import { ParallaxProvider } from 'react-scroll-parallax';
-import placeholder from './assets/placeholderImg.jpg'
+import placeholder from './assets/placeholderImg.webp'
 import HomeMain from './components/HomeMain';
 import Home from './components/Home';
 import PageRouter from './components/PageRouter';
@@ -18,8 +18,6 @@ import PageRouter from './components/PageRouter';
 // App useEffect called on APP component load but useEffect in the preload lazy PageRouter only called when Pagerouter is rendered
 //DO YOU NEED LAZYLOADING? 
 // how to prevent unnecessary fetching?
-// serve landing imgs?
-// brainstorm way to reduce landing load
 
 function App() {
   const [enter, setEnter] = useState(false)

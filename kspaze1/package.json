@@ -20,13 +20,15 @@
     "react-responsive-masonry": "^2.1.6",
     "react-scripts": "5.0.1",
     "react-scroll-parallax": "^3.3.1",
+    "simple-webp-converter": "^1.0.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "webp": "simple-webp-converter"
   },
   "eslintConfig": {
     "extends": [
