@@ -16,7 +16,7 @@ export default function HomeFeature({navID='',slideDirection='',openModal,featur
             <Carousel showThumbs={false} infiniteLoop={true} autoPlay={true} interval={3000}>
                 {featureImgList.map((image,i) => {
                         return (
-            <div className='carousel-item'>
+            <div className='carousel-item' key={`${image.split('token=')[1]}`}>
                     <img src={image} alt={`${image}`} ></img>
                 <div className="overlay">
                     <div className="img-credit">{featureCaptionList[i]? `${featureCaptionList[i]}` : placeholderCaption }</div>
@@ -36,12 +36,12 @@ export default function HomeFeature({navID='',slideDirection='',openModal,featur
                 <div className="body-wrapper">
                     <p>A few of my character works during my day in web2 were featured by eminent global artists. These works were non-commercial.</p>
                 </div>
-                <btn className='button-wrapper my-button more' onClick={()=>openModal(`page${navID}`)}>
+                <button className='button-wrapper my-button more' onClick={()=>openModal(`page${navID}`)}>
                     More
                     <FontAwesomeIcon style={{marginLeft:'0.5rem'}} icon={faChevronRight}/>
                     <FontAwesomeIcon  icon={faChevronRight}/>
                     <FontAwesomeIcon  icon={faChevronRight}/>
-                </btn>
+                </button>
                 </div>
             </div>
 

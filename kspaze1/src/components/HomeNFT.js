@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import '../App.css';
 
-export default function SectionThree({navID='',slideDirection='',openModal,NFTImgList,NFTCaptionList,placeholder}) {
+export default function HomeNFT({navID='',slideDirection='',openModal,NFTImgList,NFTCaptionList,placeholder}) {
     
     const successfulImgFetch = NFTImgList.length
     const placeholderCaption = 'Artwork by Kspaze1'
@@ -21,12 +21,12 @@ export default function SectionThree({navID='',slideDirection='',openModal,NFTIm
                     <div className="body-wrapper">
                         <p>I started in the space with making fan arts for my favorite NFT projects as a collector. I got my first exposure as an NFT creator through a curated invitation to participate in Gamestop NFT marketplace as a launch artist. Making my debut with the HITCats art collection together with the first batch of creators for the marketplace launch in July 2022, I sold out my first NFT collection and I am motivated to improve my art skills in this space.</p>
                     </div>
-                    <btn className='button-wrapper my-button more' onClick={()=>openModal(`page${navID}`)}>
+                    <button className='button-wrapper my-button more' onClick={()=>openModal(`page${navID}`)}>
                     More
                     <FontAwesomeIcon style={{marginLeft:'0.5rem'}} icon={faChevronRight}/>
                     <FontAwesomeIcon  icon={faChevronRight}/>
                     <FontAwesomeIcon  icon={faChevronRight}/>
-                </btn>
+                </button>
                 </div>
             </div>
 
@@ -35,7 +35,7 @@ export default function SectionThree({navID='',slideDirection='',openModal,NFTIm
             <Carousel showThumbs={false} infiniteLoop={true} autoPlay={true} interval={3000}>
                 {NFTImgList.map((image,i) => {
                         return (
-            <div className='carousel-item'>
+            <div className='carousel-item' key={`${image.split('token=')[1]}`}>
                     <img src={image} alt={`${image}`} ></img>
                 <div className="overlay">
                     <div className="img-credit">{NFTCaptionList[i]? `${NFTCaptionList[i]}` : placeholderCaption }</div>

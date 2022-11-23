@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import '../App.css';
 
-export default function SectionOne({navID='',slideDirection='',openModal,aboutImgList,aboutCaptionList,placeholder}) {
+export default function HomeAbout({navID='',slideDirection='',openModal,aboutImgList,aboutCaptionList,placeholder}) {
     
     const successfulImgFetch = aboutImgList.length
     const placeholderCaption = 'Artwork by Kspaze1'
@@ -29,12 +29,12 @@ export default function SectionOne({navID='',slideDirection='',openModal,aboutIm
                     creating finer arts in the web3 space, while keeping that
                     raw and rebellious essence of street arts.</p>
                 </div>
-                <btn className='button-wrapper my-button more' onClick={()=>openModal(`page${navID}`)}>
+                <button className='button-wrapper my-button more' onClick={()=>openModal(`page${navID}`)}>
                     More
                     <FontAwesomeIcon style={{marginLeft:'0.5rem'}} icon={faChevronRight}/>
                     <FontAwesomeIcon  icon={faChevronRight}/>
                     <FontAwesomeIcon  icon={faChevronRight}/>
-                </btn>
+                </button>
                 </div>
                 </div>
 
@@ -43,7 +43,7 @@ export default function SectionOne({navID='',slideDirection='',openModal,aboutIm
             {successfulImgFetch ? 
                 aboutImgList.map((image,i) => {
                         return (
-            <div>
+            <div key={`${image.split('token=')[1]}`}>
                     <img src={image} alt={`${image}`} ></img>
                 <div className="overlay">
                     <div className="img-credit">{aboutCaptionList[i]? `${aboutCaptionList[i]}` : placeholderCaption }</div>

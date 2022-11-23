@@ -66,7 +66,7 @@ export default function PageNFT({anim, toggleAnim, closePage,NFTPageImgList,NFTP
                     <Carousel showThumbs={false} infiniteLoop={true} autoPlay={true} interval={3000}>
                         {NFTPageImgList.slice(0,8).map((image,i) => {
                                 return (
-                    <div className='carousel-item'>
+                    <div className='carousel-item' key={`${image.split('token=')[1]}`}>
                             <img src={image} alt={`${image}`} ></img>
                         <div className="overlay">
                             <div className="img-credit">{NFTPageCaptionList[i]? `${NFTPageCaptionList[i]}` : placeholderCaption }</div>
@@ -98,7 +98,7 @@ export default function PageNFT({anim, toggleAnim, closePage,NFTPageImgList,NFTP
                     <Carousel showThumbs={false} infiniteLoop={true} autoPlay={true} interval={3000}>
                         {NFTPageImgList.slice(8,10).map((image,i) => {
                                 return (
-                    <div className='carousel-item'>
+                    <div className='carousel-item' key={`${image.split('token=')[1]}`}>
                             <img src={image} alt={`${image}`} ></img>
                         <div className="overlay">
                             <div className="img-credit">{NFTPageCaptionList[i]? `${NFTPageCaptionList[i]}` : placeholderCaption }</div>

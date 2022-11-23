@@ -1,23 +1,18 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, Suspense} from 'react';
 import {getSortedUrls, getImgCaptions} from './utils/firebase'
+import { ParallaxProvider } from 'react-scroll-parallax';
 import Landing from './components/Landing';
 import SocialBubbles from './components/SocialBubbles';
 import './App.css';
 import NavBar from './components/NavBar';
-import { ParallaxProvider } from 'react-scroll-parallax';
-import placeholder from './assets/placeholderImg.webp'
 import HomeMain from './components/HomeMain';
-import Home from './components/Home';
-import PageRouter from './components/PageRouter';
+import Loading from './components/Loading';
+import placeholder from './assets/placeholderImg.webp'
 
-// const pagesPromise = import('./components/PageRouter');
-// const PageRouter = React.lazy(()=>pagesPromise)
-
-//TO-DO
-// when does lazy preload work? 
-// App useEffect called on APP component load but useEffect in the preload lazy PageRouter only called when Pagerouter is rendered
-//DO YOU NEED LAZYLOADING? 
-// how to prevent unnecessary fetching?
+const homePromise = import('./components/Home');
+const Home = React.lazy(()=>homePromise)
+const pagesPromise = import('./components/PageRouter');
+const PageRouter = React.lazy(()=>pagesPromise)
 
 function App() {
   const [enter, setEnter] = useState(false)
@@ -43,6 +38,7 @@ function App() {
   const [projectsPageCaptionList, setProjectsPageCaptionList] = useState([])
 
   useEffect(()=>{
+    console.log('FETCH')
     getSortedUrls('homeMain').then(res=>setHomeMainImgList(res))
     getSortedUrls('homeAbout').then(res=>setAboutImgList(res))
     getImgCaptions('homeAbout').then(res=>setAboutCaptionList(res))
@@ -61,6 +57,7 @@ function App() {
     getImgCaptions('pageNFT').then(res=>setNFTPageCaptionList(res))
     getSortedUrls('pageProjects').then(res=>setProjectsPageImgList(res))
     getImgCaptions('pageProjects').then(res=>setProjectsPageCaptionList(res))
+    
     },[])
 
   const toggleLanding = ()=>{
@@ -108,30 +105,36 @@ function App() {
           <HomeMain homeMainImgList={homeMainImgList} placeholder={placeholder}/>
         </ParallaxProvider>
         <NavBar toggleLanding={toggleLanding} />
-        <Home 
-        openModal={openModal} 
-        bannerImgList={bannerImgList}
-        aboutImgList={aboutImgList}
-        aboutCaptionList={aboutCaptionList}
-        featureImgList={featureImgList}
-        featureCaptionList={featureCaptionList}
-        NFTImgList={NFTImgList}
-        NFTCaptionList={NFTCaptionList}
-        projectsImgList={projectsImgList}
-        projectsCaptionList={projectsCaptionList}
-        placeholder={placeholder}
-        />
+        <Suspense fallback={<Loading/>}>
+          <Home 
+          openModal={openModal} 
+          bannerImgList={bannerImgList}
+          aboutImgList={aboutImgList}
+          aboutCaptionList={aboutCaptionList}
+          featureImgList={featureImgList}
+          featureCaptionList={featureCaptionList}
+          NFTImgList={NFTImgList}
+          NFTCaptionList={NFTCaptionList}
+          projectsImgList={projectsImgList}
+          projectsCaptionList={projectsCaptionList}
+          placeholder={placeholder}
+          />
+        </Suspense>
       </div>}
-      {show && <PageRouter pageID={page} closePage={closePage} placeholder={placeholder}
-      aboutPageImgList={aboutPageImgList}
-      aboutPageCaptionList={aboutPageCaptionList}
-      featurePageImgList={featurePageImgList} 
-      featurePageCaptionList={featurePageCaptionList} 
-      NFTPageImgList={NFTPageImgList} 
-      NFTPageCaptionList={NFTPageCaptionList} 
-      projectsPageImgList={projectsPageImgList} 
-      projectsPageCaptionList={projectsPageCaptionList}
-      />}
+      {show && 
+      <Suspense fallback={<Loading/>}>
+        <PageRouter pageID={page} closePage={closePage} placeholder={placeholder}
+        aboutPageImgList={aboutPageImgList}
+        aboutPageCaptionList={aboutPageCaptionList}
+        featurePageImgList={featurePageImgList} 
+        featurePageCaptionList={featurePageCaptionList} 
+        NFTPageImgList={NFTPageImgList} 
+        NFTPageCaptionList={NFTPageCaptionList} 
+        projectsPageImgList={projectsPageImgList} 
+        projectsPageCaptionList={projectsPageCaptionList}
+        />
+      </Suspense>
+      }
       <footer>
         <h1 style={{margin:'2rem 0 1rem 0', color:'rgb(75, 75, 75)'}}>Get In Touch</h1>
         <SocialBubbles/>

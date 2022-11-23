@@ -27,7 +27,7 @@ const [selectedImg, setSelectedImg] = useState(null);
                     <Masonry columnsCount={3} gutter="10px">
                     {images.map((image,i) => {
                         return (
-                        <div className="image-container" onClick={()=>openImg(image,i)} >
+                        <div className="image-container" onClick={()=>openImg(image,i)} key={`${image.split('token=')[1]}`} >
                             <img src={image} alt={`${image}`}></img>
                             <div className="overlay">
                             </div>

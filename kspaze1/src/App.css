@@ -324,6 +324,7 @@ img {
 
 .my-button {
   color: var(--mainColor);
+  background-color:transparent;
   cursor: pointer;
   transition: transform ease 400ms;
 }
@@ -340,7 +341,6 @@ img {
 .my-button.more{
   border:none;
   border-radius: 20px;
-  height:calc(12px + 1vmin);
   padding:0.5rem 1rem;
   cursor: pointer;
   transition: transform ease 400ms;
