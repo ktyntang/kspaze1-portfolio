@@ -38,7 +38,6 @@ function App() {
   const [projectsPageCaptionList, setProjectsPageCaptionList] = useState([])
 
   useEffect(()=>{
-    console.log('FETCH')
     getSortedUrls('homeMain').then(res=>setHomeMainImgList(res))
     getSortedUrls('homeAbout').then(res=>setAboutImgList(res))
     getImgCaptions('homeAbout').then(res=>setAboutCaptionList(res))

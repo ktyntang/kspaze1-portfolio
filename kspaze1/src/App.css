@@ -1,11 +1,13 @@
 @font-face {
   font-family: 'Library3am';
-  src: url(./fonts/Library3am.woff) format("woff");
+  src: url(./fonts/Library3am.woff2) format("woff2");
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'BahnschriftLight';
-  src: url(./fonts/BahnschriftLight.woff) format('woff');
+  src: url(./fonts/BahnschriftLight.woff2) format('woff2');
+  font-display: swap;
 }
 
 :root {
