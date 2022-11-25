@@ -1,5 +1,5 @@
 import React, {useState, useEffect, Suspense} from 'react';
-import {getSortedUrls, getImgCaptions} from './utils/firebase'
+import {getSortedUrls} from './utils/firebase'
 import { ParallaxProvider } from 'react-scroll-parallax';
 import Landing from './components/Landing';
 import SocialBubbles from './components/SocialBubbles';
@@ -14,54 +14,36 @@ const Home = React.lazy(()=>homePromise)
 const pagesPromise = import('./components/PageRouter');
 const PageRouter = React.lazy(()=>pagesPromise)
 
+//DONE
+//move the useEffects into HomeMain and PageRouter
+
+// memo-ize components e.g. Home not reliant on page state but is. does it play well with lazy?
+//definitely memo-ize homeMain. it's rendering everytime page.
+
+//discoveries: 
+// domcontentload limited by bundle size.
+// webp download queues after all the useEffect fetches. 
+// even though fetchpriority high, and gets server response (1s) urls
+// the webp downlaod still takes forever??
+
+//cache control (6 month) unless change?
+
+
+
+
 function App() {
   const [enter, setEnter] = useState(false)
   const [page,setPage] = useState('landing')
   const [show, setShow] = useState(false);
+  const [landingImgList, setLandingImgList] = useState([])
   const [homeMainImgList, setHomeMainImgList] = useState([])
-  const [bannerImgList, setBannerImgList] = useState([])
-  const [aboutImgList, setAboutImgList] = useState([])
-  const [aboutCaptionList, setAboutCaptionList] = useState([])
-  const [featureImgList, setFeatureImgList] = useState([])
-  const [featureCaptionList, setFeatureCaptionList] = useState([])
-  const [NFTImgList, setNFTImgList] = useState([])
-  const [NFTCaptionList, setNFTCaptionList] = useState([])
-  const [projectsImgList, setProjectsImgList] = useState([])
-  const [projectsCaptionList, setProjectsCaptionList] = useState([])
-  const [aboutPageImgList, setAboutPageImgList] = useState([])
-  const [aboutPageCaptionList, setAboutPageCaptionList] = useState([])
-  const [featurePageImgList, setFeaturePageImgList] = useState([])
-  const [featurePageCaptionList, setFeaturePageCaptionList] = useState([])
-  const [NFTPageImgList, setNFTPageImgList] = useState([])
-  const [NFTPageCaptionList, setNFTPageCaptionList] = useState([])
-  const [projectsPageImgList, setProjectsPageImgList] = useState([])
-  const [projectsPageCaptionList, setProjectsPageCaptionList] = useState([])
 
   useEffect(()=>{
-    getSortedUrls('homeMain').then(res=>setHomeMainImgList(res))
-    getSortedUrls('homeAbout').then(res=>setAboutImgList(res))
-    getImgCaptions('homeAbout').then(res=>setAboutCaptionList(res))
-    getSortedUrls('homeBanner').then(res=>setBannerImgList(res))
-    getSortedUrls('homeFeature').then(res=>setFeatureImgList(res))
-    getImgCaptions('homeFeature').then(res=>setFeatureCaptionList(res))
-    getSortedUrls('homeNFT').then(res=>setNFTImgList(res))
-    getImgCaptions('homeNFT').then(res=>setNFTCaptionList(res))
-    getSortedUrls('homeProjects').then(res=>setProjectsImgList(res))
-    getImgCaptions('homeProjects').then(res=>setProjectsCaptionList(res))
-    getSortedUrls('pageAbout').then(res=>setAboutPageImgList(res))
-    getImgCaptions('pageAbout').then(res=>setAboutPageCaptionList(res))
-    getSortedUrls('pageFeature').then(res=>setFeaturePageImgList(res))
-    getImgCaptions('pageFeature').then(res=>setFeaturePageCaptionList(res))
-    getSortedUrls('pageNFT').then(res=>setNFTPageImgList(res))
-    getImgCaptions('pageNFT').then(res=>setNFTPageCaptionList(res))
-    getSortedUrls('pageProjects').then(res=>setProjectsPageImgList(res))
-    getImgCaptions('pageProjects').then(res=>setProjectsPageCaptionList(res))
-    
+    getSortedUrls('landing').then(res=>setLandingImgList(res)) 
+    getSortedUrls('homeMain').then(res=>setHomeMainImgList(res))     
     },[])
 
-  const toggleLanding = ()=>{
-    setEnter((enter)=>!enter)
-  }
+  const toggleLanding = ()=>{setEnter((enter)=>!enter)}
 
  const openModal =(pageID)=>{
     setShow(true)
@@ -97,7 +79,7 @@ function App() {
 
   return (
     <div className="App">
-      {!enter && <Landing toggleLanding={toggleLanding} />}
+      {!enter && <Landing toggleLanding={toggleLanding} landingImgList={landingImgList}/>}
       {enter &&
       <div>
         <ParallaxProvider>
@@ -106,16 +88,7 @@ function App() {
         <NavBar toggleLanding={toggleLanding} />
         <Suspense fallback={<Loading/>}>
           <Home 
-          openModal={openModal} 
-          bannerImgList={bannerImgList}
-          aboutImgList={aboutImgList}
-          aboutCaptionList={aboutCaptionList}
-          featureImgList={featureImgList}
-          featureCaptionList={featureCaptionList}
-          NFTImgList={NFTImgList}
-          NFTCaptionList={NFTCaptionList}
-          projectsImgList={projectsImgList}
-          projectsCaptionList={projectsCaptionList}
+          openModal={openModal}
           placeholder={placeholder}
           />
         </Suspense>
@@ -123,14 +96,6 @@ function App() {
       {show && 
       <Suspense fallback={<Loading/>}>
         <PageRouter pageID={page} closePage={closePage} placeholder={placeholder}
-        aboutPageImgList={aboutPageImgList}
-        aboutPageCaptionList={aboutPageCaptionList}
-        featurePageImgList={featurePageImgList} 
-        featurePageCaptionList={featurePageCaptionList} 
-        NFTPageImgList={NFTPageImgList} 
-        NFTPageCaptionList={NFTPageCaptionList} 
-        projectsPageImgList={projectsPageImgList} 
-        projectsPageCaptionList={projectsPageCaptionList}
         />
       </Suspense>
       }

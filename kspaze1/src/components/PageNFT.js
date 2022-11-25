@@ -5,7 +5,6 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import '../App.css'; 
 
 export default function PageNFT({anim, toggleAnim, closePage,NFTPageImgList,NFTPageCaptionList,placeholder}) {
-
     const successfulImgFetch = NFTPageImgList.length
     const placeholderCaption = 'Artwork by Kspaze1'
 

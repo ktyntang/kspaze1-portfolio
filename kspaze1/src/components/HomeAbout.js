@@ -6,7 +6,6 @@ export default function HomeAbout({navID='',slideDirection='',openModal,aboutImg
     
     const successfulImgFetch = aboutImgList.length
     const placeholderCaption = 'Artwork by Kspaze1'
-    
     return (
         <div className="section" id={`${navID}`}>
             <div className="text left">

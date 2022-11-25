@@ -25,7 +25,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && compress-cra",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "webp": "simple-webp-converter"
@@ -49,6 +49,7 @@
     ]
   },
   "devDependencies": {
+    "compress-create-react-app": "^1.3.1",
     "gh-pages": "^4.0.0"
   }
 }
