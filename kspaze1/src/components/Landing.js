@@ -14,6 +14,12 @@ export default function Landing({toggleLanding,landingImgList}) {
          hoverDivs.forEach(hoverDiv=>hoverDiv.style.cursor = 'pointer')}
    },[animationEnd])
 
+
+   function removeLoadingClass() {
+      const introAnim = document.querySelector(".introAnim");
+      introAnim.classList.remove('js-loading');
+   }
+
    const handleMouseEnter = (imgID) => {
       const img = document.querySelector(imgID)
       img.style.opacity = '1'
@@ -21,6 +27,7 @@ export default function Landing({toggleLanding,landingImgList}) {
    
    const handleMouseLeave = (imgID) => {
       const img = document.querySelector(imgID)
+      console.log(img.complete)
       img.style.opacity = '0'
    }
    
@@ -35,12 +42,15 @@ export default function Landing({toggleLanding,landingImgList}) {
          setClassNameSpecial('fade-in-out')}
          window.scrollTo(0, 0)
    }
+
    return(
 
-<div className='landing-container' onLoad={()=>console.log('loaded')}>
-   <img fetchpriority="high" className='fade-in' id="bg" alt='background' src={landingImgList?.[1]}/>
-   <img fetchpriority="high" className='fade-in' id="text" alt='text' src={landingImgList?.[0]}/>
-   <img fetchpriority="high" className='fade-in zoom' id="fg" alt='foreground' src={landingImgList?.[2]} onAnimationEnd={()=>setAnimationEnd(true)}/>
+<div className='landing-container'>
+   <div className='introAnim js-loading'>
+      <img fetchpriority="high" className='fade-in' id="bg" alt='background' src={landingImgList?.[1]}/>
+      <img fetchpriority="high" className='fade-in' id="text" alt='text' src={landingImgList?.[0]}/>
+      <img onLoad={()=>removeLoadingClass()} fetchpriority="high" className='fade-in zoom' id="fg" alt='foreground' src={landingImgList?.[2]} onAnimationEnd={()=>setAnimationEnd(true)}/>
+   </div>
    <div className='face'>
       <img fetchpriority="high" className={classNameSpecial} id='hoverSpecial' alt='hoverSpecial' src={landingImgList?.[10]} onAnimationEnd={()=>toggleLanding('home')}/>
    </div>
@@ -63,3 +73,4 @@ export default function Landing({toggleLanding,landingImgList}) {
    </div>
 )
 }
+

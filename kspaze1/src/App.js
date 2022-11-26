@@ -16,17 +16,15 @@ const PageRouter = React.lazy(()=>pagesPromise)
 
 //DONE
 //move the useEffects into HomeMain and PageRouter
+//Set cache control for 3 days, stale-while-revalidatefor 30days.
+//Made landing anim only start after img.complete
+
 
 // memo-ize components e.g. Home not reliant on page state but is. does it play well with lazy?
 //definitely memo-ize homeMain. it's rendering everytime page.
-
-//discoveries: 
-// domcontentload limited by bundle size.
-// webp download queues after all the useEffect fetches. 
-// even though fetchpriority high, and gets server response (1s) urls
-// the webp downlaod still takes forever??
-
-//cache control (6 month) unless change?
+//srcset the imgs for mobile
+// img srcset 1pixel for mobile for landing4-10
+// add loading
 
 
 

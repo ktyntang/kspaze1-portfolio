@@ -53,6 +53,12 @@ html, body {
   pointer-events: none; 
 }
 
+.js-loading *,
+.js-loading *:before,
+.js-loading *:after {
+  animation-play-state: paused !important;
+}
+
 .face img {
   opacity: 0;
   transition: opacity ease-out 1s;
