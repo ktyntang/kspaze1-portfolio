@@ -28,7 +28,7 @@ export default function PageRouter({pageID, closePage, placeholder}) {
         getImgCaptions('pageNFT').then(res=>setNFTPageCaptionList(res))
         getSortedUrls('pageProjects').then(res=>setProjectsPageImgList(res))
         getImgCaptions('pageProjects').then(res=>setProjectsPageCaptionList(res))
-    })
+    },[])
 
     const toggleAnim =(display)=>{
         setAnim(display)

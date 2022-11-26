@@ -30,7 +30,7 @@ export default function HomeFeature({navID='',slideDirection='',openModal,featur
             <div className="text left w-half">
                 <div className={`text-container js-scroll ${slideDirection}`}>
                 <div className='header-wrapper'>
-                    <h1 style={{cursor:'pointer'}} onClick={()=>openModal(`page${navID}`)}>
+                    <h1 onClick={()=>openModal(`page${navID}`)}>
                         FEATURES</h1>
                 </div>
                 <div className="body-wrapper">

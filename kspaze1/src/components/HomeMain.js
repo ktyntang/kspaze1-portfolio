@@ -13,6 +13,7 @@ export default function HomeMain({homeMainImgList,placeholder}) {
       fg.classList.add('slideUp')
       fg.classList.remove('fg-transparent')
     }
+
     return(
       <div>
            <ParallaxBanner className='home fade-in' style={{filter: `${invert? 'invert(0)':'invert(1)'}`}} onClick={()=>setInvert(!invert)}>

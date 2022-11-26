@@ -27,7 +27,6 @@ export default function Landing({toggleLanding,landingImgList}) {
    
    const handleMouseLeave = (imgID) => {
       const img = document.querySelector(imgID)
-      console.log(img.complete)
       img.style.opacity = '0'
    }
    
@@ -73,4 +72,3 @@ export default function Landing({toggleLanding,landingImgList}) {
    </div>
 )
 }
-

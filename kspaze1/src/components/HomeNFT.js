@@ -15,7 +15,7 @@ export default function HomeNFT({navID='',slideDirection='',openModal,NFTImgList
             <div className="text left w-half">
                 <div className={`text-container js-scroll ${slideDirection}`}>
                     <div className='header-wrapper'>
-                    <h1 style={{cursor:'pointer'}} onClick={()=>openModal(`page${navID}`)}>
+                    <h1 onClick={()=>openModal(`page${navID}`)}>
                             NFT</h1>
                     </div>
                     <div className="body-wrapper">

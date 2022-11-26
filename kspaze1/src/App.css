@@ -1,15 +1,3 @@
-@font-face {
-  font-family: 'Library3am';
-  src: url(./fonts/Library3am.woff2) format("woff2");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'BahnschriftLight';
-  src: url(./fonts/BahnschriftLight.woff2) format('woff2');
-  font-display: swap;
-}
-
 :root {
   --navColor:  rgb(45, 37, 52);
   --mainColor: rgb(237, 91, 62);
@@ -24,24 +12,22 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family: 'BahnschriftLight', sans-serif;
-    font-size: 1rem;
-    font-weight: 300;
-
   }
   
+  html {
+      scroll-behavior: smooth;
+    }
 
-html {
-    scroll-behavior: smooth;
-  }
 
 h1 {
-  font-family: 'Library3am';
   color: black;
-  font-weight:normal;
-  font-size: 2rem;
   cursor:context-menu;
   }
+
+footer h1 {
+  margin:2rem 0 1rem 0;
+  color:rgb(75, 75, 75);
+}
 
 /* unvisited link */
 a:link,a:visited{
@@ -197,6 +183,10 @@ img {
   box-sizing: border-box;
   margin:1%;
   max-height: 60vh;
+}
+
+.section h1{
+  cursor:pointer
 }
 
 @media all and (max-width: 768px) {

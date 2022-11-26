@@ -1,9 +1,9 @@
-import React, {useState, useEffect, Suspense} from 'react';
+import React, {useState, useEffect, Suspense, useMemo} from 'react';
 import {getSortedUrls} from './utils/firebase'
 import { ParallaxProvider } from 'react-scroll-parallax';
+import './App.css';
 import Landing from './components/Landing';
 import SocialBubbles from './components/SocialBubbles';
-import './App.css';
 import NavBar from './components/NavBar';
 import HomeMain from './components/HomeMain';
 import Loading from './components/Loading';
@@ -15,18 +15,23 @@ const pagesPromise = import('./components/PageRouter');
 const PageRouter = React.lazy(()=>pagesPromise)
 
 //DONE
-//move the useEffects into HomeMain and PageRouter
-//Set cache control for 3 days, stale-while-revalidatefor 30days.
-//Made landing anim only start after img.complete
+//
+// move fontface into index.css to trigger faster
+//inline styles to css
+//Memo-ize homeMain to prevent re-render everytime page is opened.
 
 
-// memo-ize components e.g. Home not reliant on page state but is. does it play well with lazy?
-//definitely memo-ize homeMain. it's rendering everytime page.
+
 //srcset the imgs for mobile
 // img srcset 1pixel for mobile for landing4-10
 // add loading
-
-
+// unnecessary fetching! useEffect runs everytime page router is called.
+//what i want: ImgFetcher fetch once, update state,
+// pass state to child <PageRouter/>
+//<imgFetcher>
+//<PageRouter pageID={page} closePage={closePage} placeholder={placeholder}/>
+//</imageFetcher>
+//REWRITER PageROUTER!
 
 
 function App() {
@@ -74,6 +79,8 @@ function App() {
   }
   window.addEventListener("scroll", handleScrollSlide);
 
+  const homeMainMemo = useMemo(() => <HomeMain homeMainImgList={homeMainImgList} placeholder={placeholder}/>, [homeMainImgList]);
+
 
   return (
     <div className="App">
@@ -81,7 +88,7 @@ function App() {
       {enter &&
       <div>
         <ParallaxProvider>
-          <HomeMain homeMainImgList={homeMainImgList} placeholder={placeholder}/>
+         {homeMainMemo}
         </ParallaxProvider>
         <NavBar toggleLanding={toggleLanding} />
         <Suspense fallback={<Loading/>}>
@@ -98,7 +105,7 @@ function App() {
       </Suspense>
       }
       <footer>
-        <h1 style={{margin:'2rem 0 1rem 0', color:'rgb(75, 75, 75)'}}>Get In Touch</h1>
+        <h1>Get In Touch</h1>
         <SocialBubbles/>
         <p>©2022 Kspaze1. All rights reserved.</p></footer>
     </div>

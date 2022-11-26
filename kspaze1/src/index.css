@@ -1,13 +1,27 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+
+@font-face {
+  font-family: 'Library3am';
+  src: url(./fonts/Library3am.woff2) format("woff2");
+  font-display: swap;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: 'BahnschriftLight';
+  src: url(./fonts/BahnschriftLight.woff2) format('woff2');
+  font-display: swap;
+}
+
+
+h1 {
+  font-family: 'Library3am';
+  font-weight:normal;
+  font-size: 2rem;
+}
+
+body {
+  margin: 0;
+  font-family: 'BahnschriftLight', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
 }
