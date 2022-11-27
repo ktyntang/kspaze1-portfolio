@@ -1,7 +1,6 @@
 import { ParallaxBanner, ParallaxBannerLayer } from 'react-scroll-parallax';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
-import '../App.css';
 import './Landing.css'
 import { useState } from 'react';
 

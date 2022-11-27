@@ -10,7 +10,6 @@ import StickyMenu from './StickyMenu';
 
 export default function NavBar({toggleLanding}) {
     const [navExpanded, setNavExpanded] = useState(false)
-
     return(
         <div>
         <nav className='navbar' id="top" style={{animation:'fadeIn ease 300ms'}}> 

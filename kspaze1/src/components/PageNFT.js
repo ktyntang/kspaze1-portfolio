@@ -2,7 +2,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
-import '../App.css'; 
+
 
 export default function PageNFT({anim, toggleAnim, closePage,NFTPageImgList,NFTPageCaptionList,placeholder}) {
     const successfulImgFetch = NFTPageImgList.length

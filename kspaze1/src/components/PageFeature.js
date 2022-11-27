@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
-import '../App.css'; 
+
 export default function PageFeature({anim, toggleAnim, closePage,featurePageImgList,featurePageCaptionList,placeholder}) {
 
     const successfulImgFetch = featurePageImgList.length

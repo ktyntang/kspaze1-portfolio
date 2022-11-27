@@ -1,7 +1,6 @@
 import Gallery from './Gallery';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
-import '../App.css';
 
 
 export default function PageProjects({anim, toggleAnim, closePage,projectsPageImgList,projectsPageCaptionList, placeholder}) {

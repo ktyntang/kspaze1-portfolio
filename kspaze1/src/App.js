@@ -14,25 +14,9 @@ const Home = React.lazy(()=>homePromise)
 const pagesPromise = import('./components/PageRouter');
 const PageRouter = React.lazy(()=>pagesPromise)
 
-//DONE
-//
-// move fontface into index.css to trigger faster
-//inline styles to css
-//Memo-ize homeMain to prevent re-render everytime page is opened.
-
-
-
-//srcset the imgs for mobile
-// img srcset 1pixel for mobile for landing4-10
-// add loading
-// unnecessary fetching! useEffect runs everytime page router is called.
-//what i want: ImgFetcher fetch once, update state,
-// pass state to child <PageRouter/>
-//<imgFetcher>
-//<PageRouter pageID={page} closePage={closePage} placeholder={placeholder}/>
-//</imageFetcher>
-//REWRITER PageROUTER!
-
+// FUTURE IMPROVEMENTS
+// srcset 1px imgs for mobile.
+// restructure code to reduce unnecessary fetching for pageImgs.
 
 function App() {
   const [enter, setEnter] = useState(false)
@@ -90,6 +74,7 @@ function App() {
         <ParallaxProvider>
          {homeMainMemo}
         </ParallaxProvider>
+        <Loading/>
         <NavBar toggleLanding={toggleLanding} />
         <Suspense fallback={<Loading/>}>
           <Home 

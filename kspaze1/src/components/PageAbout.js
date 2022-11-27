@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
-import '../App.css'; 
 
 
 export default function PageAbout({anim, toggleAnim, closePage,aboutPageImgList, aboutPageCaptionList,placeholder}) {

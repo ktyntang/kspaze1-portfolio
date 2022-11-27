@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
-import '../App.css';
 
 export default function HomeAbout({navID='',slideDirection='',openModal,aboutImgList,aboutCaptionList,placeholder}) {
     

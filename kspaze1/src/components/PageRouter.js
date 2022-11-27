@@ -4,7 +4,6 @@ import PageAbout from './PageAbout';
 import PageFeature from './PageFeature';
 import PageNFT from './PageNFT';
 import PageProjects from './PageProjects';
-import '../App.css';
 
 
 export default function PageRouter({pageID, closePage, placeholder}) {

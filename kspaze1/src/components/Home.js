@@ -6,7 +6,6 @@ import HomeAbout from './HomeAbout'
 import HomeFeature from './HomeFeature'
 import HomeNFT from './HomeNFT'
 import HomeProjects from './HomeProjects'
-import '../App.css';
 
 
 export default function Home({openModal,placeholder}) {

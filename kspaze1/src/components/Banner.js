@@ -1,4 +1,3 @@
-import '../App.css';
 import { ParallaxBanner, ParallaxBannerLayer } from 'react-scroll-parallax';
 
 
@@ -9,7 +8,6 @@ export default function MyParallaxBanner({img,aspectRatio='3 / 1'}) {
               <img
                 src={img}
                 alt="banner"
-                loading="lazy"
               />
             </ParallaxBannerLayer>
           </ParallaxBanner>
