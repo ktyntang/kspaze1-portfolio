@@ -1,15 +1,12 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
-
-export default function PageNFT({anim, toggleAnim, closePage,NFTPageImgList,NFTPageCaptionList,placeholder}) {
+export default function PageNFT({NFTPageImgList,NFTPageCaptionList,placeholder}) {
     const successfulImgFetch = NFTPageImgList.length
     const placeholderCaption = 'Artwork by Kspaze1'
 
     return (
-        <div className='page' animation={anim} id='pageNFT' onAnimationEnd={()=>{if(anim === 'animateOut') closePage()}}>
+        <div >
             <div className="panel" >
                 <div className='text-container'>
                     <div className='header-wrapper'>
@@ -111,9 +108,7 @@ export default function PageNFT({anim, toggleAnim, closePage,NFTPageImgList,NFTP
        
         </div>
             
-            <div className='closeModal-container'>
-            <FontAwesomeIcon icon={faXmark} className='closeModal my-button' onClick={()=>toggleAnim('animateOut')}/>
-            </div>
+            
         </div>
     );
 }

@@ -1,44 +1,28 @@
-import React, {useEffect, useState} from 'react';
-import {getSortedUrls, getImgCaptions} from '../utils/firebase';
+import React, {useState} from 'react';
 import PageAbout from './PageAbout';
 import PageFeature from './PageFeature';
 import PageNFT from './PageNFT';
 import PageProjects from './PageProjects';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 
-export default function PageRouter({pageID, closePage, placeholder}) {
+export default function PageRouter({pageID, closePage, placeholder,aboutPageImgList,aboutPageCaptionList,featurePageImgList,featurePageCaptionList,NFTPageImgList,NFTPageCaptionList,projectsPageImgList,projectsPageCaptionList}) {
     const [anim, setAnim] = useState('animateIn');
-
-    const [aboutPageImgList, setAboutPageImgList] = useState([])
-    const [aboutPageCaptionList, setAboutPageCaptionList] = useState([])
-    const [featurePageImgList, setFeaturePageImgList] = useState([])
-    const [featurePageCaptionList, setFeaturePageCaptionList] = useState([])
-    const [NFTPageImgList, setNFTPageImgList] = useState([])
-    const [NFTPageCaptionList, setNFTPageCaptionList] = useState([])
-    const [projectsPageImgList, setProjectsPageImgList] = useState([])
-    const [projectsPageCaptionList, setProjectsPageCaptionList] = useState([])
-
-    useEffect(()=>{
-        getSortedUrls('pageAbout').then(res=>setAboutPageImgList(res))
-        getImgCaptions('pageAbout').then(res=>setAboutPageCaptionList(res))
-        getSortedUrls('pageFeature').then(res=>setFeaturePageImgList(res))
-        getImgCaptions('pageFeature').then(res=>setFeaturePageCaptionList(res))
-        getSortedUrls('pageNFT').then(res=>setNFTPageImgList(res))
-        getImgCaptions('pageNFT').then(res=>setNFTPageCaptionList(res))
-        getSortedUrls('pageProjects').then(res=>setProjectsPageImgList(res))
-        getImgCaptions('pageProjects').then(res=>setProjectsPageCaptionList(res))
-    },[])
 
     const toggleAnim =(display)=>{
         setAnim(display)
     }
 
     return (
-    <div>
-        {pageID === 'pageAbout'? <PageAbout closePage={closePage} anim={anim} toggleAnim={toggleAnim} aboutPageImgList={aboutPageImgList} aboutPageCaptionList={aboutPageCaptionList} placeholder={placeholder}/>:null}
-        {pageID === 'pageFeature'? <PageFeature closePage={closePage} anim={anim} toggleAnim={toggleAnim} featurePageImgList={featurePageImgList} featurePageCaptionList={featurePageCaptionList} placeholder={placeholder}/>:null}
-        {pageID === 'pageNFT'? <PageNFT closePage={closePage} anim={anim} toggleAnim={toggleAnim} NFTPageImgList={NFTPageImgList} NFTPageCaptionList={NFTPageCaptionList} placeholder={placeholder}/>:null}
-        {pageID === 'pageProjects'? <PageProjects closePage={closePage} anim={anim} toggleAnim={toggleAnim} projectsPageImgList={projectsPageImgList} projectsPageCaptionList={projectsPageCaptionList} placeholder={placeholder}/>:null}
+    <div className='page' animation={anim} id='pageAbout' onAnimationEnd={()=>{if(anim === 'animateOut') closePage()}}>
+        {pageID === 'pageAbout'? <PageAbout aboutPageImgList={aboutPageImgList} aboutPageCaptionList={aboutPageCaptionList} placeholder={placeholder}/>:null}
+        {pageID === 'pageFeature'? <PageFeature featurePageImgList={featurePageImgList} featurePageCaptionList={featurePageCaptionList} placeholder={placeholder}/>:null}
+        {pageID === 'pageNFT'? <PageNFT NFTPageImgList={NFTPageImgList} NFTPageCaptionList={NFTPageCaptionList} placeholder={placeholder}/>:null}
+        {pageID === 'pageProjects'? <PageProjects projectsPageImgList={projectsPageImgList} projectsPageCaptionList={projectsPageCaptionList} placeholder={placeholder}/>:null}
+        <div className='closeModal-container'>
+            <FontAwesomeIcon icon={faXmark} className='closeModal my-button' onClick={()=>toggleAnim('animateOut')}/>
+        </div>
     </div>
     );
 } 

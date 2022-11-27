@@ -1,14 +1,10 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faXmark } from '@fortawesome/free-solid-svg-icons'
-
-
-export default function PageAbout({anim, toggleAnim, closePage,aboutPageImgList, aboutPageCaptionList,placeholder}) {
+export default function PageAbout({aboutPageImgList, aboutPageCaptionList,placeholder}) {
 
     const successfulCaptionFetch = aboutPageCaptionList.length
     const placeholderCaption = 'Artwork by Kspaze1'
 
     return (
-        <div className='page' animation={anim} id='pageAbout' onAnimationEnd={()=>{if(anim === 'animateOut') closePage()}}>
+        <div>
             <div className="panel" >
             <div className="text-container">
                     <div className='header-wrapper'>
@@ -61,9 +57,6 @@ export default function PageAbout({anim, toggleAnim, closePage,aboutPageImgList,
                 </div>
                 </div>
                 </div>
-            <div className='closeModal-container'>
-                <FontAwesomeIcon icon={faXmark} className='closeModal my-button' onClick={()=>toggleAnim('animateOut')}/>
-            </div>
         </div>
     );
 }

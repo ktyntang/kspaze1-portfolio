@@ -1,5 +1,5 @@
 import React, {useState, useEffect, Suspense, useMemo} from 'react';
-import {getSortedUrls} from './utils/firebase'
+import {getSortedUrls,getImgCaptions} from './utils/firebase'
 import { ParallaxProvider } from 'react-scroll-parallax';
 import './App.css';
 import Landing from './components/Landing';
@@ -16,7 +16,6 @@ const PageRouter = React.lazy(()=>pagesPromise)
 
 // FUTURE IMPROVEMENTS
 // srcset 1px imgs for mobile.
-// restructure code to reduce unnecessary fetching for pageImgs.
 
 function App() {
   const [enter, setEnter] = useState(false)
@@ -24,13 +23,57 @@ function App() {
   const [show, setShow] = useState(false);
   const [landingImgList, setLandingImgList] = useState([])
   const [homeMainImgList, setHomeMainImgList] = useState([])
+  const [homeEntered, setHomeEntered] = useState(false)
 
   useEffect(()=>{
     getSortedUrls('landing').then(res=>setLandingImgList(res)) 
     getSortedUrls('homeMain').then(res=>setHomeMainImgList(res))     
     },[])
 
-  const toggleLanding = ()=>{setEnter((enter)=>!enter)}
+  const [bannerImgList, setBannerImgList] = useState([])
+  const [aboutImgList, setAboutImgList] = useState([])
+  const [aboutCaptionList, setAboutCaptionList] = useState([])
+  const [featureImgList, setFeatureImgList] = useState([])
+  const [featureCaptionList, setFeatureCaptionList] = useState([])
+  const [NFTImgList, setNFTImgList] = useState([])
+  const [NFTCaptionList, setNFTCaptionList] = useState([])
+  const [projectsImgList, setProjectsImgList] = useState([])
+  const [projectsCaptionList, setProjectsCaptionList] = useState([])
+  const [aboutPageImgList, setAboutPageImgList] = useState([])
+  const [aboutPageCaptionList, setAboutPageCaptionList] = useState([])
+  const [featurePageImgList, setFeaturePageImgList] = useState([])
+  const [featurePageCaptionList, setFeaturePageCaptionList] = useState([])
+  const [NFTPageImgList, setNFTPageImgList] = useState([])
+  const [NFTPageCaptionList, setNFTPageCaptionList] = useState([])
+  const [projectsPageImgList, setProjectsPageImgList] = useState([])
+  const [projectsPageCaptionList, setProjectsPageCaptionList] = useState([])
+
+  
+  useEffect(()=>{
+    if (homeEntered) { 
+      getSortedUrls('homeAbout').then(res=>setAboutImgList(res))
+      getImgCaptions('homeAbout').then(res=>setAboutCaptionList(res))
+      getSortedUrls('homeBanner').then(res=>setBannerImgList(res))
+      getSortedUrls('homeFeature').then(res=>setFeatureImgList(res))
+      getImgCaptions('homeFeature').then(res=>setFeatureCaptionList(res))
+      getSortedUrls('homeNFT').then(res=>setNFTImgList(res))
+      getImgCaptions('homeNFT').then(res=>setNFTCaptionList(res))
+      getSortedUrls('homeProjects').then(res=>setProjectsImgList(res))
+      getImgCaptions('homeProjects').then(res=>setProjectsCaptionList(res))
+      getSortedUrls('pageAbout').then(res=>setAboutPageImgList(res))
+      getImgCaptions('pageAbout').then(res=>setAboutPageCaptionList(res))
+      getSortedUrls('pageFeature').then(res=>setFeaturePageImgList(res))
+      getImgCaptions('pageFeature').then(res=>setFeaturePageCaptionList(res))
+      getSortedUrls('pageNFT').then(res=>setNFTPageImgList(res))
+      getImgCaptions('pageNFT').then(res=>setNFTPageCaptionList(res))
+      getSortedUrls('pageProjects').then(res=>setProjectsPageImgList(res))
+      getImgCaptions('pageProjects').then(res=>setProjectsPageCaptionList(res))
+    }
+  },[homeEntered])
+  
+  const toggleLanding = ()=>{
+    setEnter((enter)=>!enter)
+    setHomeEntered(true)}
 
  const openModal =(pageID)=>{
     setShow(true)
@@ -74,18 +117,34 @@ function App() {
         <ParallaxProvider>
          {homeMainMemo}
         </ParallaxProvider>
-        <Loading/>
         <NavBar toggleLanding={toggleLanding} />
         <Suspense fallback={<Loading/>}>
           <Home 
           openModal={openModal}
           placeholder={placeholder}
+          bannerImgList={bannerImgList}
+          aboutImgList ={aboutImgList}
+          aboutCaptionList ={aboutCaptionList}
+          featureImgList ={featureImgList}
+          featureCaptionList ={featureCaptionList}
+          NFTImgList ={NFTImgList}
+          NFTCaptionList ={NFTCaptionList}
+          projectsImgList ={projectsImgList}
+          projectsCaptionList ={projectsCaptionList}
           />
         </Suspense>
       </div>}
       {show && 
       <Suspense fallback={<Loading/>}>
         <PageRouter pageID={page} closePage={closePage} placeholder={placeholder}
+        aboutPageImgList={aboutPageImgList}
+        aboutPageCaptionList={aboutPageCaptionList}
+        featurePageImgList={featurePageImgList}
+        featurePageCaptionList={featurePageCaptionList}
+        NFTPageImgList={NFTPageImgList}
+        NFTPageCaptionList={NFTPageCaptionList}
+        projectsPageImgList={projectsPageImgList}
+        projectsPageCaptionList={projectsPageCaptionList}
         />
       </Suspense>
       }
