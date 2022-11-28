@@ -152,6 +152,7 @@ img {
 
 .banner {
   width: 100%;
+  object-fit: cover;
 }
 
 .banner img {

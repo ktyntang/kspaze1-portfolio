@@ -2,12 +2,10 @@ import { ParallaxBanner, ParallaxBannerLayer } from 'react-scroll-parallax';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import './Landing.css'
-import { useState } from 'react';
 
 export default function HomeMain({homeMainImgList,placeholder}) {
-  const [invert, setInvert] = useState(true)
 
-    const slideUpFg =()=>{
+  const slideUpFg =()=>{
       const fg = document.querySelector('#fg')
       fg.classList.add('slideUp')
       fg.classList.remove('fg-transparent')
@@ -15,7 +13,7 @@ export default function HomeMain({homeMainImgList,placeholder}) {
 
     return(
       <div>
-           <ParallaxBanner className='home fade-in' style={{filter: `${invert? 'invert(0)':'invert(1)'}`}} onClick={()=>setInvert(!invert)}>
+           <ParallaxBanner className='home fade-in'>
              <ParallaxBannerLayer opacity={[1, 0]} shouldAlwaysCompleteAnimation={true}>
                 <img className='bg'
                     src={homeMainImgList?.[0]||placeholder}
