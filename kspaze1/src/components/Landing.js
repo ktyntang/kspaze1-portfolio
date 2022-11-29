@@ -44,14 +44,15 @@ export default function Landing({toggleLanding,landingImgList}) {
 
    return(
 
-<div className='landing-container'>
+<div className='landing-container' onLoad={()=>document.body.style.overflow = "hidden"}>
    <div className='introAnim js-loading'>
       <img fetchpriority="high" className='fade-in' id="bg" alt='background' src={landingImgList?.[1]}/>
       <img fetchpriority="high" className='fade-in' id="text" alt='text' src={landingImgList?.[0]}/>
       <img onLoad={()=>removeLoadingClass()} fetchpriority="high" className='fade-in zoom' id="fg" alt='foreground' src={landingImgList?.[2]} onAnimationEnd={()=>setAnimationEnd(true)}/>
    </div>
    <div className='face'>
-      <img fetchpriority="high" className={classNameSpecial} id='hoverSpecial' alt='hoverSpecial' src={landingImgList?.[10]} onAnimationEnd={()=>toggleLanding('home')}/>
+      <img fetchpriority="high" className={classNameSpecial} id='hoverSpecial' alt='hoverSpecial' src={landingImgList?.[10]} 
+      onAnimationEnd={()=>toggleLanding('home')}/>
    </div>
    <div className='overlay-container fade-in' id='hoverdelay' onClick={()=>{handleLandingClose()}}>
       <div className='hover-show' onMouseEnter={()=>handleMouseEnter('#hover1')} onMouseLeave={()=>handleMouseLeave('#hover1')}></div>

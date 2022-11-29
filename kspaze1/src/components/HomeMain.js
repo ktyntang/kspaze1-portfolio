@@ -12,7 +12,7 @@ export default function HomeMain({homeMainImgList,placeholder}) {
     }
 
     return(
-      <div>
+      <div onLoad={()=>document.body.style.overflow = "scroll"}>
            <ParallaxBanner className='home fade-in'>
              <ParallaxBannerLayer opacity={[1, 0]} shouldAlwaysCompleteAnimation={true}>
                 <img className='bg'

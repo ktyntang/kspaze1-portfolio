@@ -3,12 +3,13 @@ import {getSortedUrls,getImgCaptions} from './utils/firebase'
 import { ParallaxProvider } from 'react-scroll-parallax';
 import './App.css';
 import Landing from './components/Landing';
-import SocialBubbles from './components/SocialBubbles';
 import NavBar from './components/NavBar';
 import HomeMain from './components/HomeMain';
 import Loading from './components/Loading';
 import placeholder from './assets/placeholderImg.webp'
 
+
+const SocialBubbles = React.lazy(()=>import('./components/SocialBubbles'));
 const homePromise = import('./components/Home');
 const Home = React.lazy(()=>homePromise)
 const pagesPromise = import('./components/PageRouter');
@@ -108,7 +109,7 @@ function App() {
 
   const homeMainMemo = useMemo(() => <HomeMain homeMainImgList={homeMainImgList} placeholder={placeholder}/>, [homeMainImgList]);
 
-
+  
   return (
     <div className="App">
       {!enter && <Landing toggleLanding={toggleLanding} landingImgList={landingImgList}/>}
@@ -150,7 +151,9 @@ function App() {
       }
       <footer>
         <h1>Get In Touch</h1>
-        <SocialBubbles/>
+        <Suspense fallback={<p></p>}>
+          <SocialBubbles/>
+        </Suspense>
         <p>©2022 Kspaze1. All rights reserved.</p></footer>
     </div>
   );
