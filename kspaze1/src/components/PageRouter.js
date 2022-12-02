@@ -21,8 +21,7 @@ export default function PageRouter({pageID, closePage, placeholder,aboutPageImgL
         {pageID === 'pageNFT'? <PageNFT NFTPageImgList={NFTPageImgList} NFTPageCaptionList={NFTPageCaptionList} placeholder={placeholder}/>:null}
         {pageID === 'pageProjects'? <PageProjects projectsPageImgList={projectsPageImgList} projectsPageCaptionList={projectsPageCaptionList} placeholder={placeholder}/>:null}
         <div className='closeModal-container'>
-            <FontAwesomeIcon icon={faXmark} className='closeModal my-button' 
-            onClick={()=>toggleAnim('animateOut')}/>
+            <FontAwesomeIcon icon={faXmark} className='closeModal my-button' onClick={()=>toggleAnim('animateOut')}/>
         </div>
     </div>
     );

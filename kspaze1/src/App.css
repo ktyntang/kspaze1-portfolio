@@ -192,11 +192,12 @@ img {
 @media all and (max-width: 768px) {
   .section {
     flex-direction: column;
-  }
+    max-width:100%;  
  }
+}
 
 
- .image-cont {
+.image-cont {
   display: flex;
   flex-direction: column;
  }
@@ -216,6 +217,7 @@ img {
   width:100%;
   height: 60vh;
   position: relative;
+  box-sizing: border-box;
   margin:0 0 2rem 0;
 }
 
@@ -287,6 +289,7 @@ img {
   flex-direction: column;
   cursor: context-menu;
   line-height:1.8em;
+  overflow-wrap: break-word;
   justify-content: flex-start;
   margin:5% 10%;
   box-sizing: border-box;
@@ -426,23 +429,14 @@ footer p {
 
 
 .page[animation="animateIn"] {
-  animation: animateLeft 0.5s ease-out;
+  animation: animateInLeft 0.5s ease-out;
 }
 
 .page[animation="animateOut"] {
-  animation: animateOut 0.5s ease-in;
+  animation: animateOutLeft 0.5s ease-in;
   opacity: 0;
 }
 
-
-@keyframes animateLeft {
-  from {left: -1000px}
-  to {left: 0}
-}
-@keyframes animateOut {
-  from {left: 0;opacity:1}
-  to {left: -1000px;opacity:1}
-}
 
 .page .closeModal-container {
   position:sticky;
@@ -458,11 +452,21 @@ footer p {
 }
 
 
+@keyframes animateInLeft {
+  from {left: -1000px}
+  to {left: 0}
+}
+@keyframes animateOutLeft {
+  from {left: 0;opacity:1}
+  to {left: -1000px;opacity:1}
+}
+
+
 .page .text-block {
   height: 100%;
   width: 100%;
   clear:both;
-  overflow: auto;
+  overflow-y: scroll;
   box-sizing: border-box;
   margin-bottom: 2rem;
   line-height:1.8em;
@@ -486,22 +490,22 @@ footer p {
 
 
 @media all and (max-width: 480px) {
-  .page{
-    flex-direction: column;
-  }
 
   #pageProjects {
     flex-direction: column;
   }
 
   .page .panel {
-    padding: 0 5%;
+    margin-left: 2em;
+    flex-direction: column;
   }
 
   .page .gallery{
     box-sizing: border-box;
-    padding:0 0 0 5%
-  }
+    min-height:80vh;
+    margin-left:3em;
+   }
+  
   .page .text-block {
     width:100%;
     height:100%;

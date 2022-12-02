@@ -21,27 +21,29 @@ const [selectedImg, setSelectedImg] = useState(null);
    return (
         <div className="scroll-container">
             <div className="gallery-container">
-            <div className='dim' style={{opacity:`${selectedImg? '1':'0'}`}}></div>
-                <ResponsiveMasonry
-                    columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
-                    <Masonry columnsCount={3} gutter="10px">
-                    {images.map((image,i) => {
-                        return (
-                        <div className="image-container" onClick={()=>openImg(image,i)} key={`${image.split('token=')[1]}`} >
-                            <img src={image} alt={`${image}`}></img>
-                            <div className="overlay">
-                            </div>
-                        </div>)
-                    })}
-                    </Masonry>
-                </ResponsiveMasonry>
-                <div className="selected-image-container">
-                <div className="selected-image" style={{display:`${selectedImg? 'block':'none'}`}} animation={zoomFill} onAnimationEnd={()=>{if(zoomFill==='zoomFillOut')resetImg()}} onClick={()=>closeImg()}>
-                        <img src={selectedImg?selectedImg.image:null} alt={selectedImg?`${selectedImg.image}`:null} ></img>
-                            <div className="img-credit">{selectedImg?`${captions[selectedImg.index]}`:null}</div>
-                </div></div>
+                    <ResponsiveMasonry
+                        columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
+                        <Masonry columnsCount={3} gutter="10px">
+                        {images.map((image,i) => {
+                            return (
+                            <div className="image-container" onClick={()=>openImg(image,i)} key={`${image.split('token=')[1]}`} >
+                                <img src={image} alt={`${image}`}></img>
+                                <div className="overlay">
+                                </div>
+                            </div>)
+                        })}
+                        </Masonry>
+                    </ResponsiveMasonry>
+                    
             </div>
 
+            <div className="selected-image-container" 
+            style={{opacity:`${selectedImg? '1':'0'}`,pointerEvents:`${selectedImg? 'visible':'none'}` }}>
+                        <div className="selected-image" style={{display:`${selectedImg? 'block':'none'}`}} animation={zoomFill} onAnimationEnd={()=>{if(zoomFill==='zoomFillOut')resetImg()}} onClick={()=>closeImg()}>
+                            <img src={selectedImg?selectedImg.image:null} alt={selectedImg?`${selectedImg.image}`:null} ></img>
+                            <div className="img-credit">{selectedImg?`${captions[selectedImg.index]}`:null}</div>
+                        </div>
+                    </div>
         </div>
     );
 }
