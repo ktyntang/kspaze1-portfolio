@@ -8,16 +8,16 @@ export default function PageFeature({featurePageImgList,featurePageCaptionList,p
         <div>
             <div className="panel" >
                 <div className='text-container'>
-                    <div className='header-wrapper'>
+                    <div>
                         <h1>FEATURES</h1>
                     </div>
                 </div>
 
                 <div className="section alt" >
                     
-                    <div className="text left w-half" >
+                    <div className="text left " >
                         <div className='text-container'>
-                            <div className='header-wrapper'>
+                            <div>
                                 <h3>HITCATS Art collectibles on GamestopNFT </h3>
                             </div>
                             <div className="body-wrapper">
@@ -48,9 +48,9 @@ export default function PageFeature({featurePageImgList,featurePageCaptionList,p
                 <div className="section alt">
                 
 
-                    <div className="text left w-half" >
+                    <div className="text left " >
                         <div className='text-container'>
-                            <div className='header-wrapper'>
+                            <div>
                                 <h3>Art for OneEarth and Gaelscoil fundraising</h3>
                             </div>
                             <div className="body-wrapper">
@@ -71,9 +71,9 @@ export default function PageFeature({featurePageImgList,featurePageCaptionList,p
                 <div className="section alt" >
                 
 
-                    <div className="text left w-half" >
+                    <div className="text left " >
                         <div className='text-container'>
-                            <div className='header-wrapper'>
+                            <div>
                                 <h3>Wu-Tang Clan's RZA Character Portrait Art</h3>
                             </div>
                             <div className="body-wrapper">
@@ -94,9 +94,9 @@ export default function PageFeature({featurePageImgList,featurePageCaptionList,p
                 <div className="section alt" >
                 
 
-                    <div className="text left w-half" >
+                    <div className="text left " >
                         <div className='text-container'>
-                            <div className='header-wrapper'>
+                            <div>
                                 <h3>Adan Cruz Character Portrait Art</h3>
                             </div>
                             <div className="body-wrapper">
@@ -117,9 +117,9 @@ export default function PageFeature({featurePageImgList,featurePageCaptionList,p
                 <div className="section alt" >
                 
 
-                    <div className="text left w-half" >
+                    <div className="text left " >
                         <div className='text-container'>
-                            <div className='header-wrapper'>
+                            <div>
                                 <h3>Soytiet Character Portrait Art</h3>
                             </div>
                             <div className="body-wrapper">
@@ -142,9 +142,9 @@ export default function PageFeature({featurePageImgList,featurePageCaptionList,p
                 <div className="section alt" >
                 
 
-                    <div className="text left w-half" >
+                    <div className="text left " >
                         <div className='text-container'>
-                            <div className='header-wrapper'>
+                            <div>
                                 <h3>Hotboii Portrait Art</h3>
                             </div>
                             <div className="body-wrapper">

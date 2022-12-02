@@ -10,7 +10,7 @@ export default function HomeAbout({navID='',slideDirection='',openModal,aboutImg
             <div className="text left">
                 <div className={`text-container js-scroll ${slideDirection}`}>
 
-                <div className='header-wrapper'>
+                <div>
                     <h1 onClick={()=>openModal(`page${navID}`)}>
                         ABOUT</h1>
                 </div>

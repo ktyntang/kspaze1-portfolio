@@ -28,9 +28,9 @@ export default function HomeProjects({navID='',slideDirection='',openModal,proje
             
             </div>
 
-            <div className="text left w-half">
+            <div className="text left ">
                 <div className={`text-container js-scroll ${slideDirection}`}>
-                <div className='header-wrapper'>
+                <div>
                     <h1 onClick={()=>openModal(`page${navID}`)}>
                     PROJECTS</h1>
                 </div>

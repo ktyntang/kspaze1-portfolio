@@ -9,16 +9,16 @@ export default function PageNFT({NFTPageImgList,NFTPageCaptionList,placeholder})
         <div >
             <div className="panel" >
                 <div className='text-container'>
-                    <div className='header-wrapper'>
+                    <div>
                         <h1>NFTS</h1>
                     </div>
                 </div>
 
                 <div className="section alt" >
 
-                    <div className="text left w-half" >
+                    <div className="text left " >
                         <div className='text-container'>
-                            <div className='header-wrapper'>
+                            <div>
                                 <h3>1/1 Art NFTs</h3>
                             </div>
                             <div className="body-wrapper">
@@ -29,9 +29,9 @@ export default function PageNFT({NFTPageImgList,NFTPageCaptionList,placeholder})
                 </div>
 
                 <div className="section alt" >
-                    <div className="text left w-half" >
+                    <div className="text left " >
                         <div className='text-container'>
-                        <div className='header-wrapper'>
+                        <div>
                                 <h3>'Hang In There' Cats (HITCats) Art Collectibles </h3>
                             </div>
                             <div className="body-wrapper">
@@ -46,9 +46,9 @@ export default function PageNFT({NFTPageImgList,NFTPageCaptionList,placeholder})
 
                 <div className="section alt">
                 
-                    <div className="text left w-half" >
+                    <div className="text left " >
                         <div className='text-container'>
-                            <div className='header-wrapper'>
+                            <div>
                                 <h3>HITCats: The First Drop – Card Collectibles</h3>
                             </div>
                             <div className="body-wrapper">
@@ -78,9 +78,9 @@ export default function PageNFT({NFTPageImgList,NFTPageCaptionList,placeholder})
 
                 <div className="section alt">
                 
-                    <div className="text left w-half" >
+                    <div className="text left " >
                         <div className='text-container'>
-                            <div className='header-wrapper'>
+                            <div>
                                 <h3>HITCats: Dark Lights – The Sphynja Story (On-going series)</h3>
                             </div>
                             <div className="body-wrapper">

@@ -7,7 +7,7 @@ export default function PageAbout({aboutPageImgList, aboutPageCaptionList,placeh
         <div>
             <div className="panel" >
             <div className="text-container">
-                    <div className='header-wrapper'>
+                    <div>
                         <h1>ABOUT</h1>
                     </div>
 
@@ -33,7 +33,7 @@ export default function PageAbout({aboutPageImgList, aboutPageCaptionList,placeh
                     
 
                     <div className='text-block'>          
-                            <div className='image right' >
+                            <div className='image right' style={{padding:'3em 0 0 0'}}>
                                 <img src={aboutPageImgList?.[1] || placeholder} alt='me' width='100%' height='100%'></img>
                                 <div className="overlay">
                                     <div className="img-credit">{successfulCaptionFetch? `${aboutPageCaptionList[1]}` : placeholderCaption }</div>

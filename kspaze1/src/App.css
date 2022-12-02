@@ -402,19 +402,25 @@ footer p {
   overflow-y:scroll;
 }
 
+#pageProjects {
+  display:flex;
+  flex-direction: row;
+  width: calc(100% - 3rem);
+  height: 100%;
+}
+
 
 .page .panel {
   box-sizing: border-box;
   padding:5%;
   height:100%;
   width:100%;
-  text-align: left;
-
+  text-align: left;  
 }
 
 
 .page .gallery {
-  height:100%;
+  max-height:100%;
   min-width:60%;
 }
 
@@ -439,16 +445,13 @@ footer p {
 }
 
 .page .closeModal-container {
-  position:absolute;
+  position:sticky;
   top:0;
   right:0;
 }
 
 .page .closeModal {
-  position:sticky;
-  top:0;
-  left:0;
-  border-radius: 20px;
+ border-radius: 20px;
   padding:1rem;
   font-size: 2rem;
   cursor: pointer;
@@ -462,6 +465,7 @@ footer p {
   overflow: auto;
   box-sizing: border-box;
   margin-bottom: 2rem;
+  line-height:1.8em;
 }
 
 .page .text-block .image{
@@ -485,6 +489,11 @@ footer p {
   .page{
     flex-direction: column;
   }
+
+  #pageProjects {
+    flex-direction: column;
+  }
+
   .page .panel {
     padding: 0 5%;
   }
@@ -507,23 +516,7 @@ footer p {
     margin:0
   }
 
-  
-
 }
-
-.w-third {
-  max-width:calc(100% / 3)
-}
-
-.h-half {
-  height:50vh;
-}
-
-.h-third {
-  height: calc(100vh / 3)
-}
-
-
 
 
 .js-scroll {

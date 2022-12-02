@@ -18,7 +18,7 @@ export default function NavBar({toggleLanding}) {
                 <FontAwesomeIcon 
                 className="my-button menu" 
                 icon={faBars}
-                onClick={(navExpanded)=>setNavExpanded(!navExpanded)}/>
+                onClick={()=>setNavExpanded((navExpanded)=>!navExpanded)}/>
             </div>
             <ul className= {navExpanded ? "nav-links expanded" : "nav-links"} onClick={(navExpanded)=>setNavExpanded(!navExpanded)}>
                 <li className="nav-item"><a href="#About">ABOUT</a></li>
