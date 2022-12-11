@@ -43,7 +43,7 @@ function App() {
 	const [aboutPageCaptionList, setAboutPageCaptionList] = useState([]);
 	const [featurePageImgList, setFeaturePageImgList] = useState([]);
 	const [featurePageCaptionList, setFeaturePageCaptionList] = useState([]);
-	const [NFTPageImgList, setNFTPageImgList] = useState([]);
+	const [NFTPageImgList, setNFTPageImgList] = useState({});
 	const [NFTPageCaptionList, setNFTPageCaptionList] = useState([]);
 	const [projectsPageImgList, setProjectsPageImgList] = useState([]);
 	const [projectsPageCaptionList, setProjectsPageCaptionList] = useState([]);
@@ -75,8 +75,30 @@ function App() {
 			getImgCaptions("pageFeature").then((res) =>
 				setFeaturePageCaptionList(res)
 			);
-			getSortedUrls("pageNFT").then((res) => setNFTPageImgList(res));
-			getImgCaptions("pageNFT").then((res) => setNFTPageCaptionList(res));
+			getSortedUrls("pageNFT/pageNFT1").then((res) =>
+				setNFTPageImgList((NFTPageImgList) => ({
+					...NFTPageImgList,
+					a: res,
+				}))
+			);
+			getSortedUrls("pageNFT/pageNFT2").then((res) =>
+				setNFTPageImgList((NFTPageImgList) => ({
+					...NFTPageImgList,
+					b: res,
+				}))
+			);
+			getImgCaptions("pageNFT1").then((res) =>
+				setNFTPageCaptionList((NFTPageCaptionList) => ({
+					...NFTPageCaptionList,
+					a: res,
+				}))
+			);
+			getImgCaptions("pageNFT2").then((res) =>
+				setNFTPageCaptionList((NFTPageCaptionList) => ({
+					...NFTPageCaptionList,
+					b: res,
+				}))
+			);
 			getSortedUrls("pageProjects").then((res) =>
 				setProjectsPageImgList(res)
 			);
