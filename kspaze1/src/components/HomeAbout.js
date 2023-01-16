@@ -20,7 +20,7 @@ export default function HomeAbout({
 					</div>
 					<div className="body-wrapper">
 						<p>
-							I am Kspaze1, or K, a a scientist-cum-artist with a
+							I am Kspaze1, or K, a scientist-cum-artist with a
 							backstory in street art and street dance who loves
 							to create story-telling character arts. Coming from,
 							and hugely influenced by, two seemingly-opposite
